@@ -1,27 +1,149 @@
-<section class="card" style="margin-top: 20px;">
-  <h1>Contact Us</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ====== BASIC SEO ====== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - CookieGames</title>
 
-  <p>
-    If you have questions, game suggestions, feedback, or copyright concerns, feel free to contact us
-    using the information below. We do our best to respond as quickly as possible.
-  </p>
+  <link rel="icon" href="/assets/favicon.png">
 
-  <h2>General Inquiries</h2>
-  <p>Email: <strong>support@cookiegames.example</strong></p>
-  <p>(This is a placeholder email. Replace it with your preferred contact address.)</p>
+  <link rel="canonical" href="https://cookieclicker-2-game.github.io/contact.html">
 
-  <h2>Game Removal / Copyright Notice</h2>
-  <p>
-    If you believe that any embedded content on this website violates your rights, please submit a
-    DMCA request via the <a href="/dmca.html">DMCA page</a>. Provide all required information so we
-    can review and respond promptly.
-  </p>
+  <!-- TODO: GSC verify meta here -->
+  <meta name="google-site-verification" content="gwZJI-NhnCxE4bHlp8M6Vso-5kjf-jGVusAkQ6-KGoE">
 
-  <h2>Feedback & Suggestions</h2>
-  <p>
-    We welcome ideas for new games, improvements, or features. Our goal is to provide a smooth gaming
-    experience for all visitors.
-  </p>
+  <meta name="description" content="Contact CookieGames for questions, feedback, game suggestions, or copyright and DMCA concerns.">
 
-  <p>Thank you for using CookieGames!</p>
-</section>
+  <meta name="robots" content="index,follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact Us - CookieGames">
+  <meta property="og:description" content="Reach out to CookieGames with your questions, suggestions, or DMCA notices.">
+  <meta property="og:url" content="https://cookieclicker-2-game.github.io/contact.html">
+  <meta property="og:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Us - CookieGames">
+  <meta name="twitter:description" content="Use this page to contact CookieGames for support, feedback, and copyright concerns.">
+  <meta name="twitter:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png">
+
+  <!-- TODO: GA4 script here -->
+
+  <!-- Schema: ContactPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact CookieGames",
+    "url": "https://cookieclicker-2-game.github.io/contact.html",
+    "about": "Contact page for CookieGames game hub."
+  }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body data-slug="contact" data-primary-category="">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="/" class="site-logo">
+        <div class="site-logo-icon">🍪</div>
+        <span>CookieGames</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/clicker.games" class="nav-link">
+          <span class="dot"></span><span>Game Clicker</span>
+        </a>
+        <a href="/idle.games" class="nav-link">
+          <span class="dot"></span><span>Game Idle</span>
+        </a>
+        <a href="/io.games" class="nav-link">
+          <span class="dot"></span><span>Game IO</span>
+        </a>
+        <a href="/hot.games" class="nav-link">
+          <span class="dot"></span><span>Game Hot</span>
+        </a>
+      </nav>
+
+      <div class="header-right">
+        <div class="search-wrapper" id="searchWrapper">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Tìm game..."
+            autocomplete="off"
+          >
+          <div id="searchResults" class="search-results" aria-label="Search results"></div>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle" type="button">
+          <span class="icon">🌙</span>
+          <span>Theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <div class="layout">
+      <section class="main-content">
+        <nav id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb"></nav>
+
+        <article class="card" style="margin-top: 20px;">
+          <h1>Contact Us</h1>
+
+          <p>
+            If you have questions, game suggestions, feedback, or copyright concerns, feel free to contact us
+            using the information below. We do our best to respond as quickly as possible.
+          </p>
+
+          <h2>General Inquiries</h2>
+          <p>Email: <strong>support@cookiegames.example</strong></p>
+          <p>(This is a placeholder email. Replace it with your preferred contact address.)</p>
+
+          <h2>Game Removal / Copyright Notice</h2>
+          <p>
+            If you believe that any embedded content on this website violates your rights, please submit a
+            DMCA request via the <a href="/dmca.html">DMCA page</a>. Provide all required information so we
+            can review and respond promptly.
+          </p>
+
+          <h2>Feedback &amp; Suggestions</h2>
+          <p>
+            We welcome ideas for new games, improvements, or features. Our goal is to provide a smooth gaming
+            experience for all visitors.
+          </p>
+
+          <p>Thank you for using CookieGames!</p>
+        </article>
+      </section>
+
+      <aside class="sidebar">
+        <section class="card">
+          <h2 class="sidebar-title">Game hot</h2>
+          <div id="hotGames" class="hot-list"></div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>© <span data-year></span> Cookie Clicker 2 Game Hub</div>
+      <nav class="footer-links">
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact Us</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms-of-use.html">Terms of Use</a>
+        <a href="/dmca.html">DMCA</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/js/games-data.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>
