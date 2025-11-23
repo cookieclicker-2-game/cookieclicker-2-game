@@ -1216,4 +1216,49 @@ body[data-page-type="home"] #breadcrumb {
 .hot-info .hot-title {
   font-size: 0.85rem;
 }
+/* Hàng tiêu đề + meta + nút */
+.game-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap; /* mobile nhỏ thì tự xuống dòng gọn gàng */
+  margin-top: 8px;
+}
+
+.game-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.game-title {
+  margin: 0;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.game-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Link category */
+.game-meta-link {
+  color: #facc15;
+  text-decoration: none;
+}
+.game-meta-link:hover {
+  text-decoration: underline;
+}
+
+/* Nút bên phải */
+.game-actions-right {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
