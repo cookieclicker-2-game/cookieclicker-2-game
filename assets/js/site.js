@@ -144,52 +144,59 @@
 })();
 
 // =========================
-// Hot games sidebar
+// Hot games sidebar (card HOT)
 // =========================
 (function () {
+  // Danh sách slug game HOT cố định
+  const HOT_GAME_SLUGS = [
+    "slope-2",
+    "ziggy-road",
+    "dancing-beat",
+    "steal-brainrots",
+    "space-waves",
+    "speed-stars",
+    "drift-hunters-2",
+    "subway-surfers-copenhagen",
+    "steal-brainrots-2",
+    "fnf-vs-velma-demo"
+  ];
+
+  // Tạo card HOT kiểu ảnh lớn + badge
   function createHotItem(game) {
     const a = document.createElement("a");
     a.href = `/${game.slug}.html`;
-    a.className = "hot-item";
+    a.className = "hot-item hot-card";
 
     const thumbWrap = document.createElement("div");
-    thumbWrap.className = "hot-thumb-wrapper";
+    thumbWrap.className = "hot-card-thumb-wrap";
 
     const img = document.createElement("img");
     img.src = game.thumbnail;
     img.loading = "lazy";
     img.alt = `${game.title} thumbnail`;
-    img.className = "hot-thumb";
+    img.className = "hot-card-thumb";
+
+    const badge = document.createElement("div");
+    badge.className = "hot-badge";
+    badge.textContent = "HOT";
 
     thumbWrap.appendChild(img);
-
-    const info = document.createElement("div");
-    info.className = "hot-info";
-
-    const titleEl = document.createElement("div");
-    titleEl.className = "hot-title";
-    titleEl.textContent = game.title;
-
-    const meta = document.createElement("div");
-    meta.className = "hot-meta";
-    meta.textContent = Array.isArray(game.categories)
-      ? game.categories.join(", ")
-      : "";
-
-    info.appendChild(titleEl);
-    info.appendChild(meta);
+    thumbWrap.appendChild(badge);
 
     a.appendChild(thumbWrap);
-    a.appendChild(info);
 
     return a;
   }
 
   function renderHotGames() {
     const container = document.getElementById("hotGames");
-    if (!container || typeof getHotGames !== "function") return;
+    if (!container || typeof getGameBySlug !== "function") return;
 
-    const games = getHotGames(8);
+    // Lấy game theo slug, bỏ những slug không tìm thấy
+    const games = HOT_GAME_SLUGS.map((slug) => getGameBySlug(slug)).filter(
+      Boolean
+    );
+
     container.innerHTML = "";
     const frag = document.createDocumentFragment();
     games.forEach((g) => {
