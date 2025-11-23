@@ -1,1 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ====== BASIC SEO ====== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[GAME_TITLE] - Play Online Free</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/favicon.png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://cookieclicker-2-game.github.io/[GAME_SLUG].html">
+
+  <!-- Google Search Console verify -->
+  <!-- TODO: GSC verify meta here -->
+  <meta name="google-site-verification" content="gwZJI-NhnCxE4bHlp8M6Vso-5kjf-jGVusAkQ6-KGoE">
+
+  <!-- Meta description (EN, 130–160 chars) -->
+  <meta name="description" content="[VIẾT 1 CÂU NGẮN GỌN MÔ TẢ GAME, NHẤN VỀ LỐI CHƠI / THỂ LOẠI / LÝ DO THÚ VỊ]">
+
+  <!-- Meta robots -->
+  <meta name="robots" content="index,follow">
+
+  <!-- ====== Open Graph / Twitter ====== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[GAME_TITLE] - Play Online Free">
+  <meta property="og:description" content="[COPY LẠI DESCRIPTION HOẶC BIẾN THỂ NHẸ]">
+  <meta property="og:url" content="https://cookieclicker-2-game.github.io/[GAME_SLUG].html">
+  <meta property="og:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/[GAME_SLUG].png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[GAME_TITLE] - Play Online Free">
+  <meta name="twitter:description" content="[GIỐNG HOẶC KHÁC NHẸ OG:DESCRIPTION]">
+  <meta name="twitter:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/[GAME_SLUG].png">
+
+  <!-- TODO: GA4 script here -->
+
+  <!-- ====== SCHEMA: VideoGame ====== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "[GAME_TITLE]",
+    "image": "https://cookieclicker-2-game.github.io/assets/thumbs/[GAME_SLUG].png",
+    "url": "https://cookieclicker-2-game.github.io/[GAME_SLUG].html",
+    "genre": ["Clicker"],
+    "applicationCategory": "Game",
+    "operatingSystem": "Browser",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CookieGames"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "ratingCount": "5200"
+    }
+  }
+  </script>
+
+  <!-- ====== SCHEMA: Breadcrumb (Home > Category > Game) ====== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://cookieclicker-2-game.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Clicker Games",
+        "item": "https://cookieclicker-2-game.github.io/clicker.games"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "[GAME_TITLE]",
+        "item": "https://cookieclicker-2-game.github.io/[GAME_SLUG].html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body data-slug="[GAME_SLUG]" data-primary-category="[PRIMARY_CATEGORY]">
+  <!-- Header chung -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="/" class="site-logo">
+        <div class="site-logo-icon">🍪</div>
+        <span>CookieGames</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/clicker.games" class="nav-link [ACTIVE_IF_CLICKER]">
+          <span class="dot"></span><span>Game Clicker</span>
+        </a>
+        <a href="/idle.games" class="nav-link [ACTIVE_IF_IDLE]">
+          <span class="dot"></span><span>Game Idle</span>
+        </a>
+        <a href="/io.games" class="nav-link [ACTIVE_IF_IO]">
+          <span class="dot"></span><span>Game IO</span>
+        </a>
+        <a href="/hot.games" class="nav-link [ACTIVE_IF_HOT]">
+          <span class="dot"></span><span>Game Hot</span>
+        </a>
+      </nav>
+
+      <div class="header-right">
+        <div class="search-wrapper" id="searchWrapper">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Tìm game..."
+            autocomplete="off"
+          >
+          <div id="searchResults" class="search-results" aria-label="Search results"></div>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle" type="button">
+          <span class="icon">🌙</span>
+          <span>Theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <div class="layout">
+      <!-- Cột trái: game -->
+      <section class="main-content">
+        <nav id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb">
+          <!-- JS sẽ render: Home > Category > Game -->
+        </nav>
+
+        <article class="card">
+          <header class="game-header">
+            <h1 class="game-title">[GAME_TITLE]</h1>
+            <div class="game-meta">
+              <span>🎮 <strong>8,520</strong> plays</span>
+              <span>⭐ 4.5 / 5.0</span>
+              <span>Category: [GAME_CATEGORIES]</span>
+            </div>
+          </header>
+
+          <div class="game-frame-wrapper" style="margin-top: 12px;">
+            <div class="game-frame-inner">
+              <iframe
+                src="[EMBED_URL]"
+                class="game-frame"
+                title="[GAME_TITLE]"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="game-actions">
+            <button type="button" class="btn btn-primary" id="btnComment">
+              <span class="icon">💬</span>
+              <span>Bình luận</span>
+            </button>
+            <button type="button" class="btn btn-ghost" id="btnShare">
+              <span class="icon">🔗</span>
+              <span>Chia sẻ</span>
+            </button>
+            <button type="button" class="btn btn-ghost" id="btnFullscreen">
+              <span class="icon">⛶</span>
+              <span>Phóng to</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Gợi ý game cùng thể loại (reuse clickerGrid nếu muốn, hoặc block custom) -->
+        <section class="card" style="margin-top: 14px;">
+          <h2 class="section-title">Games similar to [GAME_TITLE]</h2>
+          <div id="clickerGrid" class="game-grid">
+            <!-- Nếu là clicker thì dùng clickerGrid; nếu idle/io có thể đổi id + logic sau -->
+          </div>
+        </section>
+
+        <!-- Mô tả game (4 H2 chuẩn) -->
+        <section class="card game-description" style="margin-top: 14px;">
+          <h2>Introduction to [GAME_TITLE]</h2>
+          <p>
+            [ĐOẠN INTRO: 2–3 câu mô tả gameplay tổng quan, vibe game, lý do hấp dẫn]
+          </p>
+
+          <h2>How to Play [GAME_TITLE]</h2>
+          <p>
+            [Hướng dẫn cơ bản: control, mục tiêu, loop chính: click gì, né gì, nâng cấp ra sao…]
+          </p>
+
+          <h2>Tips and Strategies</h2>
+          <ul>
+            <li>[Tip 1: chiến lược nâng cấp / sinh tồn / combo]</li>
+            <li>[Tip 2: cách tiết kiệm tài nguyên / tối ưu tốc độ]</li>
+            <li>[Tip 3: mẹo cho người mới / advanced]</li>
+          </ul>
+
+          <h2>Similar Games You Can Try</h2>
+          <p>
+            If you enjoy [GAME_TITLE], you might also like
+            <a href="/cookie-clicker-2.html">Cookie Clicker 2</a>,
+            <a href="/astro-robot-clicker.html">Astro Robot Clicker</a>,
+            or <a href="/idle-gold-miner.html">Idle Gold Miner</a>.
+          </p>
+        </section>
+      </section>
+
+      <!-- Cột phải: hot games -->
+      <aside class="sidebar">
+        <section class="card">
+          <h2 class="sidebar-title">Game hot</h2>
+          <div id="hotGames" class="hot-list">
+            <!-- JS: getHotGames(8) -->
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer chung -->
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>
+        © <span data-year></span> Cookie Clicker 2 Game Hub
+      </div>
+      <nav class="footer-links">
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact Us</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms-of-use.html">Terms of Use</a>
+        <a href="/dmca.html">DMCA</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/js/games-data.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>
 
