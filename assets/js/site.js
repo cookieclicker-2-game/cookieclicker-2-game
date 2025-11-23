@@ -93,14 +93,33 @@
       const a = document.createElement("a");
       a.href = `/${g.slug}.html`;
       a.className = "search-result-item";
-      a.textContent = g.title;
 
+      // thumb + text wrapper
+      const thumb = document.createElement("img");
+      thumb.className = "search-result-thumb";
+      thumb.src = g.thumbnail;
+      thumb.alt = g.title;
+
+      const textWrap = document.createElement("div");
+      textWrap.className = "search-result-text";
+
+      const titleEl = document.createElement("div");
+      titleEl.className = "search-result-title";
+      titleEl.textContent = g.title;
+
+      const metaEl = document.createElement("div");
+      metaEl.className = "search-result-meta";
       if (Array.isArray(g.categories) && g.categories.length > 0) {
-        const span = document.createElement("span");
-        span.className = "search-result-category";
-        span.textContent = ` [${g.categories[0]}]`;
-        a.appendChild(span);
+        metaEl.textContent = g.categories.join(", ");
+      } else {
+        metaEl.textContent = "";
       }
+
+      textWrap.appendChild(titleEl);
+      textWrap.appendChild(metaEl);
+
+      a.appendChild(thumb);
+      a.appendChild(textWrap);
 
       frag.appendChild(a);
     });
@@ -119,7 +138,6 @@
     input.addEventListener("input", function () {
       const q = normalize(input.value);
       if (!q) {
-        // Ghi chú (VI): Nếu muốn hiển thị gợi ý mặc định, có thể đưa getHotGames ở đây.
         results.innerHTML = "";
         results.classList.remove("show");
         return;
@@ -144,56 +162,59 @@
 })();
 
 // =========================
-// Hot games sidebar (card HOT)
+// Hot games sidebar
 // =========================
 (function () {
-  const HOT_GAME_SLUGS = [
-    "slope-2",
-    "ziggy-road",
-    "dancing-beat",
-    "steal-brainrots",
-    "space-waves",
-    "speed-stars",
-    "drift-hunters-2",
-    "subway-surfers-copenhagen",
-    "steal-brainrots-2",
-    "fnf-vs-velma-demo"
-  ];
-
   function createHotItem(game) {
     const a = document.createElement("a");
     a.href = `/${game.slug}.html`;
-    a.className = "hot-item hot-card";
+    a.className = "hot-item";
 
-    const wrap = document.createElement("div");
-    wrap.className = "hot-card-thumb-wrap";
+    const thumbWrap = document.createElement("div");
+    thumbWrap.className = "hot-thumb-wrapper";
 
     const img = document.createElement("img");
     img.src = game.thumbnail;
-    img.className = "hot-card-thumb";
     img.loading = "lazy";
+    img.alt = `${game.title} thumbnail`;
+    img.className = "hot-thumb";
 
-    const badge = document.createElement("div");
-    badge.className = "hot-badge";
-    badge.textContent = "HOT";
+    thumbWrap.appendChild(img);
 
-    wrap.appendChild(img);
-    wrap.appendChild(badge);
-    a.appendChild(wrap);
+    const info = document.createElement("div");
+    info.className = "hot-info";
+
+    const titleEl = document.createElement("div");
+    titleEl.className = "hot-title";
+    titleEl.textContent = game.title;
+
+    const meta = document.createElement("div");
+    meta.className = "hot-meta";
+    meta.textContent = Array.isArray(game.categories)
+      ? game.categories.join(", ")
+      : "";
+
+    info.appendChild(titleEl);
+    info.appendChild(meta);
+
+    a.appendChild(thumbWrap);
+    a.appendChild(info);
 
     return a;
   }
 
   function renderHotGames() {
     const container = document.getElementById("hotGames");
-    if (!container) return;
+    if (!container || typeof getHotGames !== "function") return;
 
-    const games = HOT_GAME_SLUGS
-      .map(slug => getGameBySlug(slug))
-      .filter(Boolean);
-
+    // lấy 10 game hot để rotator xoay vòng
+    const games = getHotGames(10);
     container.innerHTML = "";
-    games.forEach(game => container.appendChild(createHotItem(game)));
+    const frag = document.createDocumentFragment();
+    games.forEach((g) => {
+      frag.appendChild(createHotItem(g));
+    });
+    container.appendChild(frag);
   }
 
   document.addEventListener("DOMContentLoaded", renderHotGames);
@@ -256,7 +277,6 @@
 
     const body = document.body;
     const pageType = body.dataset.pageType || "";
-    const slug = body.dataset.slug;
 
     // HOME: 10 game random từ toàn bộ danh sách
     if (pageType === "home") {
@@ -349,7 +369,7 @@
 
     function createPageLink(label, page, disabled, active) {
       const a = document.createElement("a");
-      a.href = `/` + cat + `.games?page=` + page;
+      a.href = "/" + cat + `.games?page=` + page;
       a.textContent = label;
       a.className = "pagination-link";
       if (disabled) a.classList.add("is-disabled");
@@ -410,7 +430,6 @@
     const pageType = body.dataset.pageType || "";
     const slug = body.dataset.slug;
     const primaryCategory = body.dataset.primaryCategory;
-    const baseUrl = "https://cookieclicker-2-game.github.io";
 
     el.innerHTML = "";
 
@@ -709,4 +728,47 @@
       renderRecentlyPlayed();
     }
   });
+})();
+
+// =========================
+// Hot Games Rotator – hiển thị 6 game, xoay vòng 10 game
+// =========================
+(function () {
+  const VISIBLE_COUNT = 6; // số game hiển thị cùng lúc
+
+  function initHotGamesRotator() {
+    const container = document.getElementById("hotGames");
+    if (!container) return;
+
+    const items = Array.from(container.querySelectorAll(".hot-item"));
+    const total = items.length;
+    if (total === 0) return;
+
+    // Nếu game ít hơn hoặc bằng 6 thì hiện hết, không cần xoay
+    if (total <= VISIBLE_COUNT) {
+      items.forEach((el) => el.classList.remove("is-hidden"));
+      return;
+    }
+
+    let index = 0;
+
+    function updateVisible() {
+      items.forEach((el, i) => {
+        const offset = (i - index + total) % total;
+        const visible = offset < VISIBLE_COUNT;
+        el.classList.toggle("is-hidden", !visible);
+      });
+    }
+
+    // Lần đầu: set 6 game đầu tiên
+    updateVisible();
+
+    // Mỗi 4 giây trượt xuống 1 game
+    setInterval(() => {
+      index = (index + 1) % total;
+      updateVisible();
+    }, 4000);
+  }
+
+  document.addEventListener("DOMContentLoaded", initHotGamesRotator);
 })();
