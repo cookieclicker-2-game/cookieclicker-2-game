@@ -147,7 +147,6 @@
 // Hot games sidebar (card HOT)
 // =========================
 (function () {
-  // Danh sách slug game HOT cố định
   const HOT_GAME_SLUGS = [
     "slope-2",
     "ziggy-road",
@@ -161,42 +160,40 @@
     "fnf-vs-velma-demo"
   ];
 
-  // Tạo card HOT kiểu ảnh lớn + badge
   function createHotItem(game) {
     const a = document.createElement("a");
     a.href = `/${game.slug}.html`;
     a.className = "hot-item hot-card";
 
-    const thumbWrap = document.createElement("div");
-    thumbWrap.className = "hot-card-thumb-wrap";
+    const wrap = document.createElement("div");
+    wrap.className = "hot-card-thumb-wrap";
 
     const img = document.createElement("img");
     img.src = game.thumbnail;
-    img.loading = "lazy";
-    img.alt = `${game.title} thumbnail`;
     img.className = "hot-card-thumb";
+    img.loading = "lazy";
 
     const badge = document.createElement("div");
     badge.className = "hot-badge";
     badge.textContent = "HOT";
 
-    thumbWrap.appendChild(img);
-    thumbWrap.appendChild(badge);
+    wrap.appendChild(img);
+    wrap.appendChild(badge);
+    a.appendChild(wrap);
 
-    a.appendChild(thumbWrap);
     return a;
   }
 
   function renderHotGames() {
     const container = document.getElementById("hotGames");
-    if (!container || typeof getGameBySlug !== "function") return;
+    if (!container) return;
 
-    const games = HOT_GAME_SLUGS.map(slug => getGameBySlug(slug)).filter(Boolean);
+    const games = HOT_GAME_SLUGS
+      .map(slug => getGameBySlug(slug))
+      .filter(Boolean);
 
     container.innerHTML = "";
-    const frag = document.createDocumentFragment();
-    games.forEach(g => frag.appendChild(createHotItem(g)));
-    container.appendChild(frag);
+    games.forEach(game => container.appendChild(createHotItem(game)));
   }
 
   document.addEventListener("DOMContentLoaded", renderHotGames);
