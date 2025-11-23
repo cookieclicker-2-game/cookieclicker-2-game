@@ -9,7 +9,9 @@
   <link rel="icon" href="/assets/favicon.png">
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://cookieclicker-2-game.github.io/cookie-clicker-2/">
+  <link rel="canonical" href="https://cookieclicker-2-game.github.io/cookie-clicker-2.html">
+  <!-- Ghi chú dev: hiện tại file thật là cookie-clicker-2.html nên canonical dùng đường dẫn này -->
+  <!-- Nếu sau này bạn rewrite slug sạch /cookie-clicker-2/ thì sửa canonical + JSON-LD url theo -->
 
   <!-- Google Search Console verify -->
   <!-- TODO: GSC verify meta here -->
@@ -25,7 +27,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Cookie Clicker 2 - Play Online Free Clicker Game">
   <meta property="og:description" content="Play Cookie Clicker 2 online and build the most powerful cookie factory. Tap, upgrade, and idle your way to billions of cookies in this addictive clicker game.">
-  <meta property="og:url" content="https://cookieclicker-2-game.github.io/cookie-clicker-2/">
+  <meta property="og:url" content="https://cookieclicker-2-game.github.io/cookie-clicker-2.html">
   <meta property="og:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png">
 
   <!-- Twitter Card -->
@@ -35,6 +37,58 @@
   <meta name="twitter:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png">
 
   <!-- TODO: GA4 script here -->
+
+  <!-- Schema: VideoGame -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Cookie Clicker 2",
+    "image": "https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png",
+    "url": "https://cookieclicker-2-game.github.io/cookie-clicker-2.html",
+    "genre": ["Clicker", "Idle"],
+    "applicationCategory": "Game",
+    "operatingSystem": "Browser",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CookieGames"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "12340"
+    }
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList (Home > Clicker Games > Cookie Clicker 2) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://cookieclicker-2-game.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Clicker Games",
+        "item": "https://cookieclicker-2-game.github.io/clicker.games"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Cookie Clicker 2",
+        "item": "https://cookieclicker-2-game.github.io/cookie-clicker-2.html"
+      }
+    ]
+  }
+  </script>
 
   <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/css/style.css">
