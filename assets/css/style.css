@@ -897,3 +897,67 @@ body.light .site-toast {
     justify-content: flex-start;
   }
 }
+/* ===== FIX H1 + META KHÔNG BỊ THỤT DÒNG, CĂN TRÁI HOÀN TOÀN ===== */
+
+/* Hàng tiêu đề + meta + nút */
+.game-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+  text-align: left !important;
+}
+
+/* Cụm bên trái: H1 + meta */
+.game-header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;       /* luôn bám trái */
+  gap: 4px;
+  width: auto;
+  margin: 0;
+  text-align: left !important;
+}
+
+/* Tiêu đề game */
+.game-header-left .game-title,
+.game-section h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  text-align: left !important;
+}
+
+/* Dòng meta nằm sát dưới H1, không thụt */
+.game-header-left .game-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin: 0;
+  text-align: left !important;
+}
+
+/* Nhóm nút bên phải */
+.game-actions-right {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+/* Mobile: cho phép xuống 2 hàng gọn gàng */
+@media (max-width: 768px) {
+  .game-header-row {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
+
+  .game-actions-right {
+    justify-content: flex-start;
+  }
+}
+
