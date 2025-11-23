@@ -6,29 +6,36 @@
   <title>Titans Clicker - Play Online Free</title>
 
   <link rel="icon" href="/assets/favicon.png">
-
   <link rel="canonical" href="https://cookieclicker-2-game.github.io/titans-clicker.html">
 
   <!-- TODO: GSC verify meta here -->
   <meta name="google-site-verification" content="gwZJI-NhnCxE4bHlp8M6Vso-5kjf-jGVusAkQ6-KGoE">
 
-  <meta name="description" content="Play Titans Clicker online for free. Tap to defeat towering titans, unlock powerful upgrades, and build an unstoppable idle clicker squad.">
-
+  <meta name="description" content="Play Titans Clicker online for free. Tap to defeat giant bosses, upgrade your heroes, and build an unstoppable idle clicker squad.">
   <meta name="robots" content="index,follow">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Titans Clicker - Play Online Free">
-  <meta property="og:description" content="Tap your way through giant bosses in Titans Clicker. Upgrade your heroes, unlock new skills, and keep the damage numbers exploding.">
+  <meta property="og:description" content="Tap your way through massive titan bosses, unlock powerful upgrades, and keep the damage numbers exploding in Titans Clicker.">
   <meta property="og:url" content="https://cookieclicker-2-game.github.io/titans-clicker.html">
   <meta property="og:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/titans-clicker.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Titans Clicker - Play Online Free">
-  <meta name="twitter:description" content="Tap your way through giant bosses in Titans Clicker. Upgrade your heroes, unlock new skills, and keep the damage numbers exploding.">
+  <meta name="twitter:description" content="Tap to defeat titans, unlock heroes, and idle your way to huge DPS in Titans Clicker.">
   <meta name="twitter:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/titans-clicker.png">
 
   <!-- TODO: GA4 script here -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TS4TB1552X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-TS4TB1552X');
+  </script>
 
+  <!-- Schema JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,86 +47,37 @@
     "applicationCategory": "Game",
     "operatingSystem": "Browser",
     "inLanguage": "en",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CookieGames"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.5",
-      "ratingCount": "5200"
-    }
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://cookieclicker-2-game.github.io/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Clicker Games",
-        "item": "https://cookieclicker-2-game.github.io/clicker.games"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Titans Clicker",
-        "item": "https://cookieclicker-2-game.github.io/titans-clicker.html"
-      }
-    ]
+    "publisher": { "@type": "Organization", "name": "CookieGames" }
   }
   </script>
 
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
+
 <body data-slug="titans-clicker" data-primary-category="clicker">
+
   <header class="site-header">
     <div class="site-header-inner">
       <a href="/" class="site-logo">
-        <div class="site-logo-icon">🍪</div>
-        <span>CookieGames</span>
+        <div class="site-logo-icon">🍪</div><span>CookieGames</span>
       </a>
 
       <nav class="site-nav" aria-label="Main navigation">
-        <a href="/clicker.games" class="nav-link active">
-          <span class="dot"></span><span>Game Clicker</span>
-        </a>
-        <a href="/idle.games" class="nav-link">
-          <span class="dot"></span><span>Game Idle</span>
-        </a>
-        <a href="/io.games" class="nav-link">
-          <span class="dot"></span><span>Game IO</span>
-        </a>
-        <a href="/hot.games" class="nav-link">
-          <span class="dot"></span><span>Game Hot</span>
-        </a>
+        <a href="/clicker.games" class="nav-link active"><span class="dot"></span><span>Game Clicker</span></a>
+        <a href="/idle.games" class="nav-link"><span class="dot"></span><span>Game Idle</span></a>
+        <a href="/io.games" class="nav-link"><span class="dot"></span><span>Game IO</span></a>
+        <a href="/hot.games" class="nav-link"><span class="dot"></span><span>Game Hot</span></a>
       </nav>
 
       <div class="header-right">
         <div class="search-wrapper" id="searchWrapper">
           <span class="search-icon">🔍</span>
-          <input
-            type="search"
-            id="searchInput"
-            class="search-input"
-            placeholder="Tìm game..."
-            autocomplete="off"
-          >
-          <div id="searchResults" class="search-results" aria-label="Search results"></div>
+          <input type="search" id="searchInput" class="search-input" placeholder="Tìm game..." autocomplete="off">
+          <div id="searchResults" class="search-results"></div>
         </div>
 
-        <button id="themeToggle" class="theme-toggle" type="button">
-          <span class="icon">🌙</span>
-          <span>Theme</span>
+        <button id="themeToggle" class="theme-toggle">
+          <span class="icon">🌙</span><span>Theme</span>
         </button>
       </div>
     </div>
@@ -127,23 +85,24 @@
 
   <main class="page-container">
     <div class="layout">
+
       <section class="main-content">
-        <nav id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb"></nav>
+        <nav id="breadcrumb" class="breadcrumb"></nav>
 
         <article class="card">
           <header class="game-header">
             <h1 class="game-title">Titans Clicker</h1>
             <div class="game-meta">
-              <span>🎮 <strong>8,520</strong> plays</span>
+              <span>🎮 8,520 plays</span>
               <span>⭐ 4.5 / 5.0</span>
               <span>Category: Clicker</span>
             </div>
           </header>
 
-          <div class="game-frame-wrapper" style="margin-top: 12px;">
+          <div class="game-frame-wrapper">
             <div class="game-frame-inner">
               <iframe
-                src="/embed/titans-clicker/index.html"
+                src="https://game.azgame.io/titans-clicker/"
                 class="game-frame"
                 title="Titans Clicker"
                 allowfullscreen
@@ -152,77 +111,71 @@
           </div>
 
           <div class="game-actions">
-            <button type="button" class="btn btn-primary" id="btnComment">
-              <span class="icon">💬</span>
-              <span>Bình luận</span>
-            </button>
-            <button type="button" class="btn btn-ghost" id="btnShare">
-              <span class="icon">🔗</span>
-              <span>Chia sẻ</span>
-            </button>
-            <button type="button" class="btn btn-ghost" id="btnFullscreen">
-              <span class="icon">⛶</span>
-              <span>Phóng to</span>
-            </button>
+            <button class="btn btn-primary" id="btnComment"><span class="icon">💬</span>Bình luận</button>
+            <button class="btn btn-ghost" id="btnShare"><span class="icon">🔗</span>Chia sẻ</button>
+            <button class="btn btn-ghost" id="btnFullscreen"><span class="icon">⛶</span>Phóng to</button>
           </div>
         </article>
 
+        <!-- Clicker game grid -->
         <section class="card" style="margin-top: 14px;">
           <h2 class="section-title">Games similar to Titans Clicker</h2>
           <div id="clickerGrid" class="game-grid"></div>
         </section>
 
+        <!-- Description -->
         <section class="card game-description" style="margin-top: 14px;">
           <h2>Introduction to Titans Clicker</h2>
           <p>
-            Titans Clicker is a fast-paced idle clicker game where every tap sends waves of damage
-            into towering titan bosses. Watch massive health bars melt as you recruit new heroes,
-            unlock damage multipliers, and build a team that never stops attacking.
+            Titans Clicker is a boss-based clicker game where every tap blasts damage
+            into towering titans. Recruit heroes, upgrade their strength, and melt
+            huge HP bars to advance through endless stages.
           </p>
 
           <h2>How to Play Titans Clicker</h2>
           <p>
-            Click on the titan to deal damage, then spend your gold on new heroes and upgrades.
-            Each hero attacks automatically, so the longer you play the more damage you deal even
-            without clicking. Defeat one titan to move on to the next, with higher health and better rewards.
+            Click to deal damage → earn gold → spend gold on upgrades and new heroes
+            → defeat titans → unlock harder stages → repeat. The stronger your team,
+            the faster the titan falls.
           </p>
 
           <h2>Tips and Strategies</h2>
           <ul>
-            <li>Upgrade your top-performing heroes first to boost DPS efficiently.</li>
-            <li>Use active clicking during boss fights to push through tight time limits.</li>
-            <li>Revisit earlier stages to farm gold if you are stuck on a tough titan.</li>
+            <li>Upgrade auto-attack heroes early for strong idle income.</li>
+            <li>Use manual tapping during boss timers to push tough fights.</li>
+            <li>Save gold for large milestone upgrades for massive DPS bursts.</li>
           </ul>
 
-          <h2>Similar Games You Can Try</h2>
+          <h2>Similar Clicker Games</h2>
           <p>
-            If you enjoy Titans Clicker, you might also like
-            <a href="/cookie-clicker-2.html">Cookie Clicker 2</a>,
-            <a href="/astro-robot-clicker.html">Astro Robot Clicker</a>,
-            or <a href="/idle-gold-miner.html">Idle Gold Miner</a>.
+            Try also  
+            <a href="/cookie-clicker-2.html">Cookie Clicker 2</a>,  
+            <a href="/astro-robot-clicker.html">Astro Robot Clicker</a>,  
+            <a href="/cookie-clicker.html">Cookie Clicker</a>.
           </p>
         </section>
+
       </section>
 
+      <!-- Sidebar -->
       <aside class="sidebar">
         <section class="card">
           <h2 class="sidebar-title">Game hot</h2>
           <div id="hotGames" class="hot-list"></div>
         </section>
       </aside>
+
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <div>
-        © <span data-year></span> Cookie Clicker 2 Game Hub
-      </div>
+      <div>© <span data-year></span> Cookie Clicker 2 Game Hub</div>
       <nav class="footer-links">
-        <a href="/about.html">About Us</a>
-        <a href="/contact.html">Contact Us</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
         <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms-of-use.html">Terms of Use</a>
+        <a href="/terms-of-use.html">Terms</a>
         <a href="/dmca.html">DMCA</a>
       </nav>
     </div>
@@ -230,5 +183,6 @@
 
   <script src="/assets/js/games-data.js" defer></script>
   <script src="/assets/js/site.js" defer></script>
+
 </body>
 </html>
