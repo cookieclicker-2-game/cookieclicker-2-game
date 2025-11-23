@@ -922,3 +922,76 @@ body.light .site-toast {
     justify-content: flex-start;
   }
 }
+/* ===== SIDEBAR GAME HOT – CARD ẢNH LỚN ===== */
+
+/* Thu gọn sidebar */
+.sidebar {
+  width: 260px;
+  max-width: 260px;
+}
+
+/* Card chứa danh sách */
+.sidebar .card {
+  padding: 16px 12px;
+}
+
+/* Danh sách */
+.hot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Một card game */
+.hot-item.hot-card {
+  display: block;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  text-decoration: none;
+  position: relative;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+/* Hover */
+.hot-item.hot-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+}
+
+/* Bọc ảnh */
+.hot-card-thumb-wrap {
+  position: relative;
+}
+
+/* Ảnh game */
+.hot-card-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+/* Badge HOT */
+.hot-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ef4444;
+  padding: 4px 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+}
