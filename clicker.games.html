@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clicker Games - Play Free Online Clicker Games</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/favicon.png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://cookieclicker-2-game.github.io/clicker.games">
+
+  <!-- Google Search Console verify -->
+  <!-- TODO: GSC verify meta here -->
+  <meta name="google-site-verification" content="gwZJI-NhnCxE4bHlp8M6Vso-5kjf-jGVusAkQ6-KGoE">
+
+  <!-- Meta description -->
+  <meta name="description" content="Discover the best free clicker games like Cookie Clicker 2, Titans Clicker, and more. Tap, upgrade, and idle your way to huge numbers in our clicker game collection.">
+
+  <!-- Meta robots -->
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Clicker Games - Play Free Online Clicker Games">
+  <meta property="og:description" content="Play Cookie Clicker 2 and other free online clicker games. Build idle empires, tap for upgrades, and watch your numbers explode.">
+  <meta property="og:url" content="https://cookieclicker-2-game.github.io/clicker.games">
+  <meta property="og:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Clicker Games - Play Free Online Clicker Games">
+  <meta name="twitter:description" content="Play Cookie Clicker 2 and other free online clicker games. Build idle empires, tap for upgrades, and watch your numbers explode.">
+  <meta name="twitter:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png">
+
+  <!-- TODO: GA4 script here -->
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body data-slug="clicker-games" data-primary-category="clicker">
+  <!-- Header chung -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="/" class="site-logo">
+        <div class="site-logo-icon">🍪</div>
+        <span>CookieGames</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/clicker.games" class="nav-link active">
+          <span class="dot"></span><span>Game Clicker</span>
+        </a>
+        <a href="/idle.games" class="nav-link">
+          <span class="dot"></span><span>Game Idle</span>
+        </a>
+        <a href="/io.games" class="nav-link">
+          <span class="dot"></span><span>Game IO</span>
+        </a>
+        <a href="/hot.games" class="nav-link">
+          <span class="dot"></span><span>Game Hot</span>
+        </a>
+      </nav>
+
+      <div class="header-right">
+        <div class="search-wrapper" id="searchWrapper">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Tìm game..."
+            autocomplete="off"
+          >
+          <div id="searchResults" class="search-results" aria-label="Search results"></div>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle" type="button">
+          <span class="icon">🌙</span>
+          <span>Theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <div class="layout">
+      <section class="main-content">
+        <nav id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb">
+          <!-- JS sẽ render: Home > Clicker Games -->
+        </nav>
+
+        <article class="card">
+          <header class="game-header">
+            <h1 class="game-title">Clicker Games</h1>
+            <div class="game-meta">
+              <span>🍪 Collection of free clicker games</span>
+              <span>Updated regularly</span>
+            </div>
+          </header>
+
+          <section style="margin-top: 12px;">
+            <p style="font-size:14px; line-height:1.6; opacity:0.95;">
+              Explore the best free online clicker games, from <strong>Cookie Clicker 2</strong> to
+              brainrot-style tap adventures. Click to earn resources, invest in upgrades, and let
+              your idle factories work while you relax.
+            </p>
+          </section>
+
+          <section style="margin-top: 14px;">
+            <h2 class="section-title">All clicker games</h2>
+            <div id="categoryGrid" class="game-grid">
+              <!-- JS: getGamesByCategory("clicker") với phân trang -->
+            </div>
+
+            <div id="pagination" class="pagination" aria-label="Pagination">
+              <!-- JS render Prev / 1 2 3 / Next -->
+            </div>
+          </section>
+        </article>
+      </section>
+
+      <!-- Sidebar: hot games tái sử dụng -->
+      <aside class="sidebar">
+        <section class="card">
+          <h2 class="sidebar-title">Game hot</h2>
+          <div id="hotGames" class="hot-list">
+            <!-- JS: getHotGames(8) -->
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>
+        © <span data-year></span> Cookie Clicker 2 Game Hub
+      </div>
+      <nav class="footer-links">
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact Us</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms-of-use.html">Terms of Use</a>
+        <a href="/dmca.html">DMCA</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/js/games-data.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>
 
