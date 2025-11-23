@@ -717,4 +717,49 @@ body.light .site-toast {
     padding-inline: 12px;
   }
 }
+/* ===============================
+   Category page: pagination
+================================= */
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  justify-content: center;
+}
+
+.pagination button,
+.pagination a {
+  min-width: 32px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+body.light .pagination button,
+body.light .pagination a {
+  background: #f9fafb;
+  color: #111827;
+  border-color: rgba(156, 163, 175, 0.8);
+}
+
+.pagination .active {
+  background: radial-gradient(circle at 0 0, #facc15, #eab308, #f97316);
+  color: #111827;
+  border-color: rgba(234, 179, 8, 0.9);
+}
+
+.pagination button:hover,
+.pagination a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.8);
+}
 
