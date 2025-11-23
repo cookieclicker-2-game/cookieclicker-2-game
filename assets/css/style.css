@@ -1,1 +1,720 @@
-/* Global styles for Cookie Clicker 2 site - sẽ chỉnh ở bước sau */
+/* ===============================
+   Global styles - Cookie Clicker 2 site
+   Ghi chú: UI text có thể là tiếng Việt,
+   nội dung SEO (H1, description) là tiếng Anh
+================================= */
+
+/* Biến màu chung */
+:root {
+  --bg-dark: #020617;
+  --bg-dark-soft: #0f172a;
+  --bg-light: #f9fafb;
+  --bg-light-soft: #e5e7eb;
+  --text-dark: #0f172a;
+  --text-light: #e5e7eb;
+  --accent-cookie: #facc15;
+  --accent-secondary: #4f46e5;
+  --border-soft: rgba(148, 163, 184, 0.4);
+  --card-bg-dark: rgba(15, 23, 42, 0.95);
+  --card-bg-light: #ffffff;
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.45);
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --transition-fast: 0.2s ease-out;
+}
+
+/* Mặc định body.dark (theme tối) */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Theme light */
+body.light {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* Link reset */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Container chính */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 96px 16px 32px; /* chừa chỗ cho header sticky */
+}
+
+/* ===============================
+   Header (sticky + blur)
+================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.95),
+    rgba(15, 23, 42, 0.7),
+    transparent
+  );
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+body.light .site-header {
+  background: linear-gradient(
+    to bottom,
+    rgba(249, 250, 251, 0.98),
+    rgba(249, 250, 251, 0.85),
+    transparent
+  );
+  border-bottom-color: rgba(156, 163, 175, 0.5);
+}
+
+.site-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Logo */
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.site-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #facc15, #eab308);
+  box-shadow: 0 0 0 2px rgba(234, 179, 8, 0.5), 0 16px 35px rgba(15, 23, 42, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* Nav */
+.site-nav {
+  display: flex;
+  gap: 8px;
+  margin-left: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  background: rgba(15, 23, 42, 0.6);
+  color: #e5e7eb;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.nav-link span.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-cookie);
+}
+
+.nav-link:hover {
+  background: rgba(31, 41, 55, 0.9);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.7);
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  background: radial-gradient(circle at 10% 0%, #facc15, #eab308, #fb923c);
+  color: #111827;
+  border-color: rgba(253, 230, 138, 0.4);
+}
+
+/* Header right: search + theme */
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Search */
+.search-wrapper {
+  position: relative;
+  width: 220px;
+  max-width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  padding: 7px 30px 7px 28px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+}
+
+body.light .search-input {
+  background: rgba(249, 250, 251, 0.9);
+  color: #111827;
+  border-color: rgba(156, 163, 175, 0.8);
+}
+
+.search-input::placeholder {
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.search-input:focus {
+  border-color: var(--accent-cookie);
+  box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.5);
+  transform: translateY(-1px);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+body.light .search-input:focus {
+  background: #ffffff;
+}
+
+/* Icon search */
+.search-icon {
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* Kết quả search dropdown */
+.search-results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.98);
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
+  padding: 6px;
+  max-height: 340px;
+  overflow: hidden auto;
+  font-size: 14px;
+  display: none;
+}
+
+body.light .search-results {
+  background: #ffffff;
+  border-color: rgba(156, 163, 175, 0.7);
+}
+
+.search-results.visible {
+  display: block;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.search-result-item:hover {
+  background: rgba(51, 65, 85, 0.85);
+}
+
+body.light .search-result-item:hover {
+  background: rgba(243, 244, 246, 0.95);
+}
+
+.search-result-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.search-result-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.search-result-title {
+  font-weight: 500;
+}
+
+.search-result-meta {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  padding: 5px 8px;
+  font-size: 14px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+body.light .theme-toggle {
+  background: rgba(249, 250, 251, 0.9);
+  color: #111827;
+}
+
+.theme-toggle:hover {
+  background: rgba(30, 64, 175, 0.9);
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.8);
+  transform: translateY(-1px);
+  border-color: rgba(129, 140, 248, 0.8);
+}
+
+/* ===============================
+   Main layout
+================================= */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+  gap: 20px;
+}
+
+/* Game + description (cột trái) */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Sidebar (cột phải) */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 13px;
+  opacity: 0.9;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.breadcrumb a {
+  color: var(--accent-cookie);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Card chung */
+.card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-soft);
+  background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+  box-shadow: var(--shadow-soft);
+  padding: 16px 16px 14px;
+}
+
+body.light .card {
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(148, 163, 184, 0.35);
+}
+
+/* Header game */
+.game-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.game-title {
+  font-size: 26px;
+  margin: 0;
+}
+
+.game-meta {
+  font-size: 13px;
+  opacity: 0.9;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.game-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Khung game iframe */
+.game-frame-wrapper {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: radial-gradient(circle at top left, #0b1120, #020617);
+  box-shadow: 0 24px 65px rgba(15, 23, 42, 0.9);
+}
+
+.game-frame-inner {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+}
+
+.game-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 16px;
+}
+
+/* Nút hành động game */
+.game-actions {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Button base */
+.btn {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 7px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn span.icon {
+  font-size: 15px;
+}
+
+.btn-primary {
+  background: radial-gradient(circle at 0 0, #facc15, #eab308, #f97316);
+  color: #111827;
+  border-color: rgba(234, 179, 8, 0.8);
+}
+
+.btn-ghost {
+  border-color: rgba(148, 163, 184, 0.6);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.9);
+}
+
+body.light .btn {
+  background: #f9fafb;
+  color: #111827;
+}
+
+body.light .btn-ghost {
+  background: #ffffff;
+}
+
+/* Sidebar hot games */
+.sidebar-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.hot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hot-item {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hot-item:hover {
+  background: rgba(30, 64, 175, 0.8);
+  transform: translateY(-1px);
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.9);
+}
+
+body.light .hot-item:hover {
+  background: rgba(243, 244, 246, 0.98);
+  box-shadow: 0 15px 30px rgba(148, 163, 184, 0.45);
+}
+
+.hot-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.hot-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+}
+
+.hot-name {
+  font-weight: 500;
+}
+
+.hot-meta {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+/* Grid clicker games giống Cookie Clicker 2 */
+.section-title {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.game-card {
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+
+body.light .game-card {
+  background: #ffffff;
+}
+
+.game-card-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.game-card-body {
+  padding: 8px 9px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.game-card-title {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.game-card-meta {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.game-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(250, 204, 21, 0.9);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.95);
+  background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.18), rgba(15, 23, 42, 0.96));
+}
+
+/* Mô tả game */
+.game-description {
+  margin-top: 8px;
+}
+
+.game-description h2 {
+  font-size: 18px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+.game-description p,
+.game-description ul {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+/* Footer */
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid rgba(148, 163, 184, 0.4);
+  padding: 20px 16px 24px;
+  font-size: 13px;
+}
+
+.site-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-links a {
+  opacity: 0.9;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Toast */
+.site-toast {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: rgba(15, 23, 42, 0.98);
+  color: #e5e7eb;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+  pointer-events: none;
+  z-index: 60;
+}
+
+body.light .site-toast {
+  background: rgba(17, 24, 39, 0.98);
+}
+
+.site-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===============================
+   Responsive
+================================= */
+
+@media (max-width: 960px) {
+  .site-header-inner {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .site-nav {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header-right {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .search-wrapper {
+    flex: 1;
+  }
+
+  .page-container {
+    padding-top: 90px;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header-inner {
+    padding-inline: 12px;
+  }
+
+  .site-logo span:last-child {
+    display: none; /* Ẩn chữ logo trên màn hình rất nhỏ để đỡ chật */
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .page-container {
+    padding-inline: 12px;
+  }
+}
+
