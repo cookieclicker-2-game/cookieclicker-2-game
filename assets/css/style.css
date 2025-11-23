@@ -840,11 +840,10 @@ body[data-page-type="home"] #breadcrumb {
   grid-template-columns: minmax(0, 1fr) 220px; /* main : sidebar */
   gap: 20px;
 }
-
-/* Sidebar Game hot không chiếm quá nhiều chiều cao */
+/* Game hot: không scroll, để auto theo nội dung */
 .sidebar .card:first-child {
-  max-height: 280px;
-  overflow-y: auto;
+  max-height: none;
+  overflow: visible;
 }
 
 /* Thu nhỏ chữ trong danh sách hot một chút */
@@ -859,7 +858,7 @@ body[data-page-type="home"] #breadcrumb {
   font-size: 0.85rem;
 }
 
-/* Khung chơi game fit hơn với game nhúng */
+/* Khung chơi game responsive 16:9 */
 .game-frame-wrapper {
   border-radius: 18px;
   overflow: hidden;
@@ -867,9 +866,8 @@ body[data-page-type="home"] #breadcrumb {
 
 .game-frame-inner {
   position: relative;
-  height: 640px;                 /* cao cố định trên desktop */
-  max-height: calc(100vh - 220px);
-  padding-top: 0;                 /* bỏ tỉ lệ 16:9 cũ */
+  padding-top: 56.25%; /* 16:9 cho desktop & mobile */
+  height: auto;
 }
 
 .game-frame {
@@ -880,15 +878,10 @@ body[data-page-type="home"] #breadcrumb {
   border: 0;
 }
 
-/* Mobile: giảm chiều cao khung chơi */
+/* Mobile: nếu muốn thấp hơn chút */
 @media (max-width: 768px) {
-  .layout {
-    grid-template-columns: 1fr;   /* mobile: sidebar xuống dưới */
-  }
-
   .game-frame-inner {
-    height: 420px;
-    max-height: 65vh;
+    padding-top: 65%; /* hơi cao hơn để dễ bấm nút */
   }
 }
 
