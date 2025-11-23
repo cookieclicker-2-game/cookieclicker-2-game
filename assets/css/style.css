@@ -1005,3 +1005,62 @@ body.light .site-toast {
   letter-spacing: 0.04em;
   z-index: 2;
 }
+/* ===== FIX: GAME HEADER LAYOUT ===== */
+
+/* H1 chỉ 1 dòng */
+.game-title {
+  margin: 0;
+  padding: 0;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  white-space: nowrap;            /* không xuống dòng */
+}
+
+/* Meta nằm chung 1 hàng */
+.game-meta {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 14px;                      /* khoảng cách giữa 🎮 ⭐ Category */
+  flex-wrap: nowrap;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Mỗi item meta giữ theo hàng ngang */
+.game-meta span {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+/* Đưa meta xuống dưới H1 */
+.game-header-left {
+  display: flex;
+  flex-direction: column !important;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* ===== NÚT ICON-ONLY ===== */
+.game-actions .btn {
+  padding: 8px;
+  border-radius: 999px;
+  min-width: 40px;
+  min-height: 40px;
+  font-size: 0 !important;     /* Ẩn chữ */
+  justify-content: center;      /* icon nằm giữa */
+}
+
+/* Icon bên trong lớn bình thường */
+.game-actions .btn .icon {
+  font-size: 18px !important;
+}
+
+/* 3 nút luôn nằm trên 1 hàng */
+.game-actions.game-actions-right {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
