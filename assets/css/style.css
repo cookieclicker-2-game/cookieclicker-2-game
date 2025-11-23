@@ -1315,4 +1315,37 @@ body[data-page-type="home"] #breadcrumb {
     justify-content: flex-start;
   }
 }
+/* ===== FIX: H1 căn trái, không bị thụt vào ===== */
+
+.game-header-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.game-title {
+  margin: 0;
+  padding: 0;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  text-align: left !important;
+}
+
+.game-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+
+/* BẮT BUỘC: xoá mọi text-align center trong khối game */
+.game-section h1,
+.game-section,
+.game-header-left,
+.game-header-row {
+  text-align: left !important;
+}
 
