@@ -203,7 +203,7 @@
 
 // =========================
 // Block dưới khung chơi (home + game)
-// Home: 12 game = 6 clicker + 6 idle
+// Home: 10 game random từ toàn bộ GAMES
 // Trang game: 12 clicker mới nhất
 // =========================
 (function () {
@@ -212,7 +212,6 @@
     a.href = `/${game.slug}.html`;
     a.className = "game-card";
 
-    // Ảnh vuông
     const thumb = document.createElement("div");
     thumb.className = "game-card-thumb";
 
@@ -223,7 +222,6 @@
 
     thumb.appendChild(img);
 
-    // Body chỉ có tên game, không meta/category
     const body = document.createElement("div");
     body.className = "game-card-body";
 
@@ -242,41 +240,17 @@
   function renderGrid(containerId, games) {
     const container = document.getElementById(containerId);
     if (!container) return;
+
     container.innerHTML = "";
     const frag = document.createDocumentFragment();
-    games.forEach((g) => {
-      frag.appendChild(createGridCard(g));
-    });
+    games.forEach((g) => frag.appendChild(createGridCard(g)));
     container.appendChild(frag);
   }
 
-  // Lấy 6 clicker + 6 idle không cần theo thứ tự
-  function getMixedClickerIdle() {
-    // 6 game clicker
-    const clickers =
-      typeof getClickerGames === "function"
-        ? getClickerGames()
-        : GAMES.filter(
-            (g) =>
-              Array.isArray(g.categories) &&
-              g.categories.includes("clicker")
-          );
-
-    // 6 game idle
-    let idle = [];
-    if (typeof getGamesByCategory === "function") {
-      idle = getGamesByCategory("idle", 1, 100).items || [];
-    } else {
-      idle = GAMES.filter(
-        (g) =>
-          Array.isArray(g.categories) && g.categories.includes("idle")
-      );
-    }
-
-    const pickClicker = clickers.slice(0, 6);
-    const pickIdle = idle.slice(0, 6);
-
-    return pickClicker.concat(pickIdle).slice(0, 12);
+  // Lấy ngẫu nhiên N game từ toàn bộ danh sách
+  function getRandomGames(count) {
+    const shuffled = GAMES.slice().sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, count);
   }
 
   function initBlocks() {
@@ -286,15 +260,15 @@
     const pageType = body.dataset.pageType || "";
     const slug = body.dataset.slug;
 
-    // HOME: 12 game (6 clicker + 6 idle)
+    // HOME: 10 game random từ toàn bộ danh sách
     if (pageType === "home") {
-      const mixed = getMixedClickerIdle();
-      renderGrid("clickerGrid", mixed);
+      const randomGames = getRandomGames(10);
+      renderGrid("clickerGrid", randomGames);
       return;
     }
 
     // TRANG GAME: 12 clicker mới nhất
-    if (slug && typeof getClickerGames === "function") {
+    if (pageType === "game" && typeof getClickerGames === "function") {
       if (document.getElementById("clickerGrid")) {
         const clickers = getClickerGames(12);
         renderGrid("clickerGrid", clickers);
