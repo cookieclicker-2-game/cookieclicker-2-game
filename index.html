@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cookie Clicker 2 - Free Online Clicker Game</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cookie Clicker 2 - Play Free Online Clicker Game</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="/assets/favicon.png">
+  <link rel="icon" href="/assets/favicon.png" />
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://cookieclicker-2-game.github.io/">
+  <!-- Canonical: trang chủ -->
+  <link rel="canonical" href="https://cookieclicker-2-game.github.io/" />
 
-  <!-- Google Search Console verify -->
-  <!-- TODO: GSC verify meta here -->
-  <meta name="google-site-verification" content="gwZJI-NhnCxE4bHlp8M6Vso-5kjf-jGVusAkQ6-KGoE">
+  <!-- TODO: GSC verify meta -->
+  <meta name="google-site-verification" content="gwZJI-NhnCxE4bHlp8M6Vso-5kjf-jGVusAkQ6-KGoE" />
 
-  <!-- Meta description -->
-  <meta name="description" content="Play Cookie Clicker 2 online for free. Upgrade your bakery, unlock new power-ups, and see how many cookies you can bake in this addictive clicker game.">
-
-  <!-- Meta robots -->
-  <meta name="robots" content="index,follow">
+  <!-- Meta description: riêng cho trang chủ -->
+  <meta
+    name="description"
+    content="Play Cookie Clicker 2 free in your browser. Tap to bake cookies, unlock upgrades, and watch your numbers explode in this addictive clicker game hub."
+  />
+  <meta name="robots" content="index,follow" />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Cookie Clicker 2 - Free Online Clicker Game">
-  <meta property="og:description" content="Play Cookie Clicker 2 online for free. Upgrade your bakery, unlock new power-ups, and see how many cookies you can bake in this addictive clicker game.">
-  <meta property="og:url" content="https://cookieclicker-2-game.github.io/">
-  <meta property="og:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cookie Clicker 2 - Play Free Online Clicker Game" />
+  <meta
+    property="og:description"
+    content="Enjoy Cookie Clicker 2 and other clicker, idle, and IO games in one simple, fast browser hub."
+  />
+  <meta property="og:url" content="https://cookieclicker-2-game.github.io/" />
+  <meta property="og:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cookie Clicker 2 - Free Online Clicker Game">
-  <meta name="twitter:description" content="Play Cookie Clicker 2 online for free. Upgrade your bakery, unlock new power-ups, and see how many cookies you can bake in this addictive clicker game.">
-  <meta name="twitter:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cookie Clicker 2 - Play Free Online Clicker Game" />
+  <meta
+    name="twitter:description"
+    content="Click to bake cookies, unlock upgrades, and discover more idle & clicker games online."
+  />
+  <meta name="twitter:image" content="https://cookieclicker-2-game.github.io/assets/thumbs/cookie-clicker-2.png" />
 
-  <!-- TODO: GA4 script here -->
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TS4TB1552X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-TS4TB1552X");
+  </script>
 
-  <!-- Schema: WebSite + SearchAction + Organization -->
+  <!-- Schema.org: WebSite + SearchAction cho toàn site -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "CookieGames - Cookie Clicker 2 Game Hub",
+    "name": "Cookie Clicker 2 Game Hub",
     "url": "https://cookieclicker-2-game.github.io/",
     "potentialAction": {
       "@type": "SearchAction",
@@ -51,23 +64,26 @@
   }
   </script>
 
+  <!-- Optional: WebPage schema cho home -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "CookieGames",
+    "@type": "WebPage",
+    "name": "Cookie Clicker 2 - Play Free Online Clicker Game",
     "url": "https://cookieclicker-2-game.github.io/",
-    "logo": "https://cookieclicker-2-game.github.io/assets/favicon.png"
+    "description": "Home page of Cookie Clicker 2 Game Hub featuring the Cookie Clicker 2 browser game and curated clicker, idle, IO and hot games."
   }
   </script>
 
-  <!-- Global CSS -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-<body data-slug="home" data-primary-category="">
-  <!-- Header chung -->
+
+<body data-page-type="home">
+
+  <!-- HEADER -->
   <header class="site-header">
     <div class="site-header-inner">
+
       <a href="/" class="site-logo">
         <div class="site-logo-icon">🍪</div>
         <span>CookieGames</span>
@@ -89,47 +105,54 @@
       </nav>
 
       <div class="header-right">
-        <div class="search-wrapper" id="searchWrapper">
+        <!-- Search -->
+        <div id="searchWrapper" class="search-wrapper">
           <span class="search-icon">🔍</span>
           <input
-            type="search"
             id="searchInput"
+            type="search"
             class="search-input"
             placeholder="Tìm game..."
             autocomplete="off"
-          >
-          <div id="searchResults" class="search-results" aria-label="Search results"></div>
+          />
+          <div id="searchResults" class="search-results"></div>
         </div>
 
+        <!-- Theme toggle -->
         <button id="themeToggle" class="theme-toggle" type="button">
-          <span class="icon">🌙</span>
-          <span>Theme</span>
+          <span class="icon">🌙</span><span>Theme</span>
         </button>
       </div>
+
     </div>
   </header>
 
+  <!-- MAIN -->
   <main class="page-container">
     <div class="layout">
-      <!-- Cột trái: featured Cookie Clicker 2 -->
-      <section class="main-content">
-        <nav id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb">
-          <span>Home</span>
-        </nav>
 
+      <!-- MAIN COLUMN -->
+      <section class="main-content">
+
+        <!-- Breadcrumb: home có thể chỉ hiển thị "Home" (JS sẽ xử lý nếu cần) -->
+        <nav id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb"></nav>
+
+        <!-- FEATURED GAME: COOKIE CLICKER 2 -->
         <article class="card">
+
           <header class="game-header">
             <h1 class="game-title">Cookie Clicker 2</h1>
             <div class="game-meta">
-              <span>🍪 <strong>12,340</strong> plays</span>
+              <span>🎮 25,430 plays</span>
               <span>⭐ 4.8 / 5.0</span>
-              <span>Category: Clicker · Idle</span>
+              <span>Category: Clicker</span>
             </div>
           </header>
 
-          <div class="game-frame-wrapper" style="margin-top: 12px;">
+          <!-- GAME FRAME -->
+          <div class="game-frame-wrapper">
             <div class="game-frame-inner">
-              <!-- Ghi chú dev (VN): tạm dùng iframe embed chính Cookie Clicker 2 -->
+              <!-- Ghi chú dev (VI): nhúng file embed nội bộ để tránh phụ thuộc host ngoài -->
               <iframe
                 src="/embed/cookie-clicker-2/index.html"
                 class="game-frame"
@@ -139,80 +162,95 @@
             </div>
           </div>
 
+          <!-- ACTION BUTTONS -->
           <div class="game-actions">
-            <button type="button" class="btn btn-primary" id="btnComment">
-              <span class="icon">💬</span>
-              <span>Bình luận</span>
+            <button id="btnComment" class="btn btn-primary" type="button">
+              <span class="icon">💬</span><span>Bình luận</span>
             </button>
-            <button type="button" class="btn btn-ghost" id="btnShare">
-              <span class="icon">🔗</span>
-              <span>Chia sẻ</span>
+            <button id="btnShare" class="btn btn-ghost" type="button">
+              <span class="icon">🔗</span><span>Chia sẻ</span>
             </button>
-            <button type="button" class="btn btn-ghost" id="btnFullscreen">
-              <span class="icon">⛶</span>
-              <span>Phóng to</span>
+            <button id="btnFullscreen" class="btn btn-ghost" type="button">
+              <span class="icon">⛶</span><span>Phóng to</span>
             </button>
           </div>
+
         </article>
 
-        <!-- Block clicker games giống Cookie Clicker 2 -->
-        <section class="card" style="margin-top: 14px;">
-          <h2 class="section-title">Clicker games giống Cookie Clicker 2</h2>
-          <div id="clickerGrid" class="game-grid">
-            <!-- TODO: sẽ render bằng JS từ GAMES (getClickerGames) -->
-          </div>
+        <!-- BLOCK: CLICKER GAMES / NEW GAMES -->
+        <section class="card" style="margin-top:14px;">
+          <h2 class="section-title">Clicker games similar to Cookie Clicker 2</h2>
+          <!-- Ghi chú dev (VI): site.js sẽ gọi getClickerGames(12) và render vào đây -->
+          <div id="clickerGrid" class="game-grid"></div>
         </section>
 
-        <!-- Mô tả game: content tiếng Anh -->
-        <section class="card game-description" style="margin-top: 14px;">
-          <h2>Introduction to Cookie Clicker 2</h2>
-          <p>
-            Cookie Clicker 2 is a free online clicker game where every tap on the giant cookie
-            helps you grow a crazy, ever-expanding bakery empire. Buy auto-clickers, hire grandmas,
-            unlock factories, and watch your cookies-per-second skyrocket.
-          </p>
-
-          <h2>How to Play Cookie Clicker 2</h2>
-          <p>
-            Click the big cookie to earn your first batch of cookies, then invest them into buildings
-            and upgrades that generate cookies automatically. The deeper you go, the more powerful
-            and absurd your production chain becomes.
-          </p>
-
-          <h2>Tips and Strategies</h2>
-          <ul>
-            <li>Focus early on cheap upgrades that boost your manual clicks.</li>
-            <li>Balance between buying new buildings and upgrading existing ones.</li>
-            <li>Check in often to spend your offline cookie production efficiently.</li>
-          </ul>
-
-          <h2>Similar Clicker Games</h2>
-          <p>
-            If you enjoy Cookie Clicker 2, you might also like other idle clicker games such as
-            <strong>Astro Robot Clicker</strong>, <strong>Idle Gold Miner</strong>, or
-            <strong>Brainrot Craft</strong>. We will feature them in the Clicker and Idle categories.
-          </p>
+        <!-- OPTIONAL: New games / Recently added -->
+        <section class="card" style="margin-top:14px;">
+          <h2 class="section-title">New & popular games</h2>
+          <!-- Ghi chú dev (VI): có thể dùng getNewGames(12) hoặc mix hot + newest -->
+          <div id="newGamesGrid" class="game-grid"></div>
         </section>
+
+        <!-- DESCRIPTION / SEO CONTENT CHO TRANG CHỦ -->
+        <section class="card game-description" style="margin-top:14px;">
+
+          <h2>Welcome to Cookie Clicker 2 Game Hub</h2>
+          <p>
+            Cookie Clicker 2 Game Hub is a simple, fast, browser-based collection focused on clicker,
+            idle, IO, and hot arcade games. Right at the top of the list is
+            <strong>Cookie Clicker 2</strong>, a satisfying tap game where every click gives you more cookies
+            and more upgrades to unlock.
+          </p>
+
+          <h2>How to play Cookie Clicker 2</h2>
+          <p>
+            Start by clicking the giant cookie to earn your first cookies. Spend your resources on upgrades,
+            helpers, and auto-click features that bake even while you relax. Over time, small taps turn into
+            huge numbers as your production snowballs.
+          </p>
+
+          <h2>Why players love clicker and idle games</h2>
+          <p>
+            Clicker and idle games are perfect for multitasking. You can leave them running in the background,
+            come back later, and enjoy the progress your upgrades have generated. Cookie Clicker 2 and other
+            titles on this site are tuned for quick sessions as well as long-term progression.
+          </p>
+
+          <h2>Explore more games</h2>
+          <p>
+            When you want a change of pace, check out our other sections:
+            browse more <a href="/clicker.games">clicker games</a>,
+            chill with <a href="/idle.games">idle games</a>,
+            or jump into real-time battles in <a href="/io.games">IO games</a>.
+            You can also open <a href="/hot.games">Hot games</a> to see what’s trending now.
+          </p>
+
+        </section>
+
       </section>
 
-      <!-- Cột phải: Hot games -->
+      <!-- SIDEBAR: HOT GAMES -->
       <aside class="sidebar">
         <section class="card">
           <h2 class="sidebar-title">Game hot</h2>
-          <div id="hotGames" class="hot-list">
-            <!-- TODO: sẽ render bằng JS getHotGames(8) -->
-          </div>
+          <!-- Ghi chú dev (VI): site.js sẽ dùng getHotGames(8) và render list vào đây -->
+          <div id="hotGames" class="hot-list"></div>
+        </section>
+
+        <!-- OPTIONAL: Recently played (localStorage) -->
+        <section class="card" id="recentlyPlayedSection" style="display:none; margin-top:14px;">
+          <h2 class="sidebar-title">Tiếp tục chơi</h2>
+          <div id="recentlyPlayed" class="hot-list"></div>
         </section>
       </aside>
+
     </div>
   </main>
 
-  <!-- Footer chung -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <div>
-        © <span data-year></span> Cookie Clicker 2 Game Hub
-      </div>
+      <div>© <span data-year></span> Cookie Clicker 2 Game Hub</div>
       <nav class="footer-links">
         <a href="/about.html">About Us</a>
         <a href="/contact.html">Contact Us</a>
@@ -223,7 +261,9 @@
     </div>
   </footer>
 
+  <!-- JS -->
   <script src="/assets/js/games-data.js" defer></script>
-<script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+
 </body>
 </html>
