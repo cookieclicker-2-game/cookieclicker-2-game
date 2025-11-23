@@ -1261,4 +1261,58 @@ body[data-page-type="home"] #breadcrumb {
   gap: 10px;
   flex-wrap: wrap;
 }
+/* Hàng tiêu đề + meta + nút: luôn 1 hàng */
+.game-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;          /* KHÔNG cho nhóm nút rơi xuống hàng 2 */
+}
+
+/* Cụm bên trái: H1 + meta trên cùng 1 hàng, cho phép tự xuống dòng khi thiếu chỗ */
+.game-header-left {
+  display: flex;
+  flex-wrap: wrap;            /* text dài quá thì meta tự xuống dưới H1, nhưng vẫn là 1 cụm */
+  align-items: center;
+  gap: 12px;
+}
+
+/* H1 gọn hơn chút cho đủ chỗ */
+.game-title {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+/* Meta nằm ngay sát H1 */
+.game-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Nhóm nút bên phải, không có margin-top để khỏi tụt xuống */
+.game-actions {
+  margin-top: 0;
+}
+
+.game-actions-right {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;          /* 3 nút giữ trên 1 hàng */
+}
+@media (max-width: 768px) {
+  .game-header-row {
+    flex-wrap: wrap;          /* mobile cho phép 2 hàng */
+    gap: 8px 12px;
+  }
+
+  .game-actions-right {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
 
