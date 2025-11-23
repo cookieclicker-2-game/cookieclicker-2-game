@@ -580,7 +580,7 @@ body.light .btn-ghost {
   gap: 10px;
 }
 
-/* Layout mặc định: icon nhỏ + text (dùng cho "Tiếp tục chơi") */
+/* Layout mặc định: icon nhỏ + text (dùng cho "Play Again") */
 .hot-item {
   display: flex;
   align-items: center;
