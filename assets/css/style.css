@@ -1415,3 +1415,19 @@ body.light .game-description h3::after,
 body.light .game-description h2::after {
   background: linear-gradient(to right, #f59e0b, transparent);
 }
+/* === Stronger H3 styling (override) === */
+
+.game-description h3 {
+  font-size: 19px;
+  font-weight: 700;
+  margin-top: 26px;
+  margin-bottom: 10px;
+  color: #fde68a; /* warm cookie highlight */
+  text-shadow: 0 0 8px rgba(250, 204, 21, 0.35);
+  letter-spacing: 0.2px;
+}
+
+body.light .game-description h3 {
+  color: #92400e;          /* rich brown in light mode */
+  text-shadow: none;       /* sạch, không bị mờ chữ */
+}
