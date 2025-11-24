@@ -32,11 +32,6 @@
 // =========================
 // Theme (Dark / Light)
 // =========================
-(function () {
-  const body = document.body;
-  const toggleBtn = document.getElementById("themeToggle");
-  const THEME_KEY = "theme";
-
   function applyTheme(theme) {
     if (theme === "light") {
       body.classList.remove("dark");
@@ -46,7 +41,13 @@
       body.classList.add("dark");
       theme = "dark";
     }
+
     localStorage.setItem(THEME_KEY, theme);
+
+    // Sync theme xuống Cusdis (nếu đã khai báo)
+    if (typeof window.__setCusdisTheme === "function") {
+      window.__setCusdisTheme(theme);
+    }
   }
 
   function initTheme() {
