@@ -1460,3 +1460,51 @@ body.light .comments-card {
   box-shadow: 0 12px 30px rgba(0,0,0,0.35);
   overflow: hidden;
 }
+/* ===============================
+   COMMENTS – Cookie Clicker style
+================================= */
+
+.comments-card {
+  margin-top: 14px;
+  padding: 20px 22px 22px;
+  border-radius: 20px;
+  background: #7a511f;         /* caramel */
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 12px 28px rgba(60,40,10,0.55);
+  overflow: hidden;
+}
+
+/* Light mode cũng dùng caramel sáng hơn */
+body.light .comments-card {
+  background: #996624;       /* caramel nhạt */
+  border-color: rgba(0,0,0,0.18);
+  box-shadow: 0 8px 18px rgba(60,40,10,0.25);
+}
+
+.comments-card .section-title {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffe7b3;             /* vàng kem – dễ đọc */
+}
+
+/* Khung Cusdis */
+#cusdis_thread {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Iframe Cusdis – bo góc + bỏ scroll */
+#cusdis_thread iframe {
+  width: 100% !important;
+  min-height: 520px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent !important;
+}
+
+/* FIX chữ bên trong (Cách 1 – override màu text bên trong iframe) */
+#cusdis_thread iframe {
+  color-scheme: light;
+}
+
