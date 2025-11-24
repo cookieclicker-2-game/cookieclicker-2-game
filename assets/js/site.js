@@ -1,7 +1,7 @@
 // /assets/js/site.js
 
 // =========================
-// Helper: Toast thông báo
+// Helper: Toast notification
 // =========================
 (function () {
   let toastEl = null;
@@ -11,7 +11,7 @@
     if (toastEl) return toastEl;
     toastEl = document.createElement("div");
     toastEl.id = "siteToast";
-    toastEl.className = "site-toast"; // style trong CSS
+    toastEl.className = "site-toast";
     document.body.appendChild(toastEl);
     return toastEl;
   }
@@ -37,7 +37,6 @@
   const toggleBtn = document.getElementById("themeToggle");
   const THEME_KEY = "theme";
 
-  // Ghi chú (VI): mặc định dark nếu chưa có theme trong localStorage
   function applyTheme(theme) {
     if (theme === "light") {
       body.classList.remove("dark");
@@ -81,12 +80,24 @@
     return (str || "").toLowerCase();
   }
 
-  function renderSearchResults(resultsContainer, games) {
+  function renderSearchResults(resultsContainer, games, query) {
     resultsContainer.innerHTML = "";
-    if (!games || games.length === 0) {
+
+    const q = (query || "").trim();
+    if (!q) {
       resultsContainer.classList.remove("show");
       return;
     }
+
+    if (!games || games.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "search-result-empty";
+      empty.textContent = "No result for: " + q;
+      resultsContainer.appendChild(empty);
+      resultsContainer.classList.add("show");
+      return;
+    }
+
     const frag = document.createDocumentFragment();
 
     games.forEach((g) => {
@@ -94,7 +105,6 @@
       a.href = `/${g.slug}.html`;
       a.className = "search-result-item";
 
-      // thumb + text wrapper
       const thumb = document.createElement("img");
       thumb.className = "search-result-thumb";
       thumb.src = g.thumbnail;
@@ -136,21 +146,23 @@
     if (!input || !results || !wrapper || typeof GAMES === "undefined") return;
 
     input.addEventListener("input", function () {
-      const q = normalize(input.value);
-      if (!q) {
+      const q = input.value || "";
+      const trimmed = q.trim();
+
+      if (!trimmed) {
         results.innerHTML = "";
         results.classList.remove("show");
         return;
       }
 
       const matched = GAMES.filter((g) =>
-        normalize(g.title).includes(q)
+        normalize(g.title).includes(normalize(trimmed))
       ).slice(0, MAX_RESULTS);
 
-      renderSearchResults(results, matched);
+      renderSearchResults(results, matched, trimmed);
     });
 
-    // Click ngoài search để đóng dropdown
+    // Click outside → close dropdown
     document.addEventListener("click", function (e) {
       if (!wrapper.contains(e.target)) {
         results.classList.remove("show");
@@ -207,7 +219,7 @@
     const container = document.getElementById("hotGames");
     if (!container || typeof getHotGames !== "function") return;
 
-    // lấy 10 game hot để rotator xoay vòng
+    // 10 hot games → rotator will show 6 at a time
     const games = getHotGames(10);
     container.innerHTML = "";
     const frag = document.createDocumentFragment();
@@ -221,9 +233,9 @@
 })();
 
 // =========================
-// Block dưới khung chơi (home + game)
-// Home: 10 game random từ toàn bộ GAMES
-// Trang game: 12 clicker mới nhất
+// Grid below main game
+// Home: 10 games (5 clicker, 3 idle, 2 io)
+// Game page: 12 latest clicker games
 // =========================
 (function () {
   function createGridCard(game) {
@@ -266,10 +278,22 @@
     container.appendChild(frag);
   }
 
-  // Lấy ngẫu nhiên N game từ toàn bộ danh sách
-  function getRandomGames(count) {
-    const shuffled = GAMES.slice().sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, count);
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function pickRandom(list, count, usedSlugs) {
+    const available = list.filter((g) => !usedSlugs.has(g.slug));
+    if (available.length === 0) return [];
+    const shuffled = shuffle(available);
+    const picked = shuffled.slice(0, Math.min(count, shuffled.length));
+    picked.forEach((g) => usedSlugs.add(g.slug));
+    return picked;
   }
 
   function initBlocks() {
@@ -278,14 +302,31 @@
     const body = document.body;
     const pageType = body.dataset.pageType || "";
 
-    // HOME: 10 game random từ toàn bộ danh sách
     if (pageType === "home") {
-      const randomGames = getRandomGames(10);
-      renderGrid("clickerGrid", randomGames);
+      // Build 10 games: 5 clicker, 3 idle, 2 io
+      const clickers = GAMES.filter(
+        (g) => Array.isArray(g.categories) && g.categories.includes("clicker")
+      );
+      const idles = GAMES.filter(
+        (g) => Array.isArray(g.categories) && g.categories.includes("idle")
+      );
+      const ios = GAMES.filter(
+        (g) => Array.isArray(g.categories) && g.categories.includes("io")
+      );
+
+      const used = new Set();
+      const result = [];
+
+      result.push(...pickRandom(clickers, 5, used));
+      result.push(...pickRandom(idles, 3, used));
+      result.push(...pickRandom(ios, 2, used));
+
+      const finalList = shuffle(result).slice(0, 10);
+      renderGrid("clickerGrid", finalList);
       return;
     }
 
-    // TRANG GAME: 12 clicker mới nhất
+    // Game detail page: 12 latest clicker games
     if (pageType === "game" && typeof getClickerGames === "function") {
       if (document.getElementById("clickerGrid")) {
         const clickers = getClickerGames(12);
@@ -377,7 +418,6 @@
       return a;
     }
 
-    // Prev
     if (currentPage > 1) {
       ul.appendChild(createPageLink("Prev", currentPage - 1, false, false));
     }
@@ -386,7 +426,6 @@
       ul.appendChild(createPageLink(String(p), p, false, p === currentPage));
     }
 
-    // Next
     if (currentPage < totalPages) {
       ul.appendChild(createPageLink("Next", currentPage + 1, false, false));
     }
@@ -447,7 +486,6 @@
     const homeLink = createCrumb("Home", "/", false);
     el.appendChild(homeLink);
 
-    // Trang chủ: chỉ Home
     if (pageType === "home") {
       return;
     }
@@ -473,9 +511,8 @@
       return;
     }
 
-    // Trang game chi tiết
+    // Game detail page
     if (slug) {
-      // Category chính
       let cat = primaryCategory || "";
       let catLabel = "";
       let catHref = "";
@@ -504,7 +541,6 @@
         el.appendChild(catLink);
       }
 
-      // Tên game
       if (typeof getGameBySlug === "function") {
         const game = getGameBySlug(slug);
         if (game) {
@@ -524,7 +560,7 @@
 })();
 
 // =========================
-// Nút Chia sẻ, Phóng to, Bình luận
+// Share / Fullscreen / Comment buttons
 // =========================
 (function () {
   function handleShare() {
@@ -533,25 +569,27 @@
       navigator.clipboard
         .writeText(url)
         .then(() => {
-          showToast("Đã copy link trò chơi!");
+          showToast("Game link copied!");
         })
         .catch(() => {
-          showToast("Không copy được link, hãy copy thủ công.");
+          showToast("Failed to copy link. Please copy manually.");
         });
     } else {
-      // Fallback đơn giản
-      window.prompt("Copy link trò chơi:", url);
+      window.prompt("Copy game link:", url);
     }
   }
 
   function handleFullscreen() {
-    const iframe = document.querySelector(".game-frame");
-    if (!iframe) {
-      showToast("Không tìm thấy khung game để phóng to.");
+    const doc = document;
+    const target =
+      document.querySelector(".game-frame-wrapper") ||
+      document.querySelector(".game-frame");
+
+    if (!target) {
+      showToast("Game frame not found.");
       return;
     }
 
-    const doc = document;
     const isFullscreen =
       doc.fullscreenElement ||
       doc.webkitFullscreenElement ||
@@ -559,16 +597,16 @@
       doc.msFullscreenElement;
 
     if (!isFullscreen) {
-      if (iframe.requestFullscreen) {
-        iframe.requestFullscreen();
-      } else if (iframe.webkitRequestFullscreen) {
-        iframe.webkitRequestFullscreen();
-      } else if (iframe.mozRequestFullScreen) {
-        iframe.mozRequestFullScreen();
-      } else if (iframe.msRequestFullscreen) {
-        iframe.msRequestFullscreen();
+      if (target.requestFullscreen) {
+        target.requestFullscreen();
+      } else if (target.webkitRequestFullscreen) {
+        target.webkitRequestFullscreen();
+      } else if (target.mozRequestFullScreen) {
+        target.mozRequestFullScreen();
+      } else if (target.msRequestFullscreen) {
+        target.msRequestFullscreen();
       } else {
-        showToast("Trình duyệt không hỗ trợ fullscreen.");
+        showToast("Your browser does not support fullscreen.");
       }
     } else {
       if (doc.exitFullscreen) {
@@ -638,7 +676,6 @@
       list = [];
     }
 
-    // Xóa nếu trùng slug
     list = list.filter((item) => item.slug !== slug);
 
     list.unshift({
@@ -674,13 +711,14 @@
     container.innerHTML = "";
     const frag = document.createDocumentFragment();
 
-    list.slice(0, 8).forEach((item) => {
+    // Show max 3 recently played games
+    list.slice(0, 3).forEach((item) => {
       const game = getGameBySlug(item.slug);
       if (!game) return;
 
       const a = document.createElement("a");
       a.href = `/${game.slug}.html`;
-      a.className = "hot-item"; // tái dùng style hot-list
+      a.className = "hot-item";
 
       const thumbWrap = document.createElement("div");
       thumbWrap.className = "hot-thumb-wrapper";
@@ -719,11 +757,9 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    // Thêm vào history nếu là trang game chi tiết
     if (document.body.dataset.slug) {
       addCurrentGameToHistory();
     }
-    // Render block "Tiếp tục chơi" trên trang chủ (nếu có)
     if (document.body.dataset.pageType === "home") {
       renderRecentlyPlayed();
     }
@@ -731,10 +767,10 @@
 })();
 
 // =========================
-// Hot Games Rotator – hiển thị 6 game, xoay vòng 10 game
+// Hot Games Rotator – show 6 of 10
 // =========================
 (function () {
-  const VISIBLE_COUNT = 6; // số game hiển thị cùng lúc
+  const VISIBLE_COUNT = 6;
 
   function initHotGamesRotator() {
     const container = document.getElementById("hotGames");
@@ -744,7 +780,6 @@
     const total = items.length;
     if (total === 0) return;
 
-    // Nếu game ít hơn hoặc bằng 6 thì hiện hết, không cần xoay
     if (total <= VISIBLE_COUNT) {
       items.forEach((el) => el.classList.remove("is-hidden"));
       return;
@@ -760,10 +795,8 @@
       });
     }
 
-    // Lần đầu: set 6 game đầu tiên
     updateVisible();
 
-    // Mỗi 4 giây trượt xuống 1 game
     setInterval(() => {
       index = (index + 1) % total;
       updateVisible();
