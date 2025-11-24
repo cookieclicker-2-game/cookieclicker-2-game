@@ -1087,3 +1087,26 @@ body.light .site-toast {
   flex-wrap: nowrap;
   gap: 10px;
 }
+/* ===============================
+   MOBILE: Make game frame full width & tall
+================================= */
+
+@media (max-width: 768px) {
+  .game-frame-outer,
+  .game-frame-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Cho phép iframe cao hơn – không bị bó theo 16:9 */
+  .game-frame-wrapper {
+    padding-top: 0 !important;
+    height: 85vh; /* Gần full màn hình, giống đúng ảnh bạn gửi */
+    border-radius: 0; /* Optional: full width */
+  }
+
+  .game-frame {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
