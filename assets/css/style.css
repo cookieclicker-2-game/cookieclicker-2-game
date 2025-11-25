@@ -1674,15 +1674,41 @@ body.light .comment-error {
    DESCRIPTION COLLAPSE (Show more)
 ================================= */
 
-.game-description {
-  position: relative;
+.game-description-inner {
   overflow: hidden;
-  max-height: 500px;   /* <<< kiểm soát chiều cao phần hiển thị */
+  max-height: 500px;   /* chỉnh cao thấp ở đây */
   transition: max-height 0.35s ease;
 }
 
-.game-description.expanded {
-  max-height: 9999px;  /* mở full */
+/* khi section có class expanded thì inner mở full */
+.game-description.expanded .game-description-inner {
+  max-height: 9999px;
+}
+
+.desc-toggle-btn {
+  margin-top: 12px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid #3b82f6;
+  background: rgba(15, 23, 42, 0.85);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.25s ease;
+}
+
+body.light .desc-toggle-btn {
+  background: white;
+  color: black;
+  border-color: #2563eb;
+}
+
+.desc-toggle-btn:hover {
+  background: rgba(37, 99, 235, 0.2);
+  transform: translateY(-1px);
 }
 
 .desc-toggle-btn {
