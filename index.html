@@ -344,7 +344,7 @@
 
         </section>
 
-        <!-- COMMENTS – Cookie Clicker 2 -->
+       <!-- COMMENTS – Cookie Clicker 2 (ngay dưới phần nội dung) -->
         <section class="comments-section" id="comments" data-game-id="cookie-clicker-2">
           <div class="comments-header-row">
             <h3 class="comments-title">Comments <span id="comment-count">(0)</span></h3>
@@ -361,17 +361,16 @@
           <div class="comments-divider"></div>
 
           <div class="comments-list" id="comments-list">
-            <!-- Comment cards sẽ được JS render -->
+            <!-- Comment cards will be rendered by JS -->
           </div>
 
-          <form class="comment-form" id="comment-form">
+          <form class="comment-form" id="comment-form" novalidate>
             <div class="comment-input-row">
               <input
                 type="text"
                 id="comment-text"
                 class="comment-input-main"
                 placeholder="Add comment"
-                required
               />
               <button type="submit" class="comment-send-btn" aria-label="Send comment">
                 &gt;
@@ -382,21 +381,21 @@
               type="text"
               id="comment-name"
               class="comment-input-sub"
-              placeholder="Name"
+              placeholder="Name (optional)"
               autocomplete="name"
             />
 
             <input
-              type="email"
+              type="text"
               id="comment-email"
               class="comment-input-sub"
-              placeholder="Email"
+              placeholder="Email (optional)"
               autocomplete="email"
             />
 
             <label class="comment-terms">
-              <input type="checkbox" id="comment-terms" required />
-              <span>I’d read and agree to the terms and conditions.</span>
+              <input type="checkbox" id="comment-terms" />
+              <span>I’ve read and agree to the terms and conditions.</span>
             </label>
           </form>
         </section>
