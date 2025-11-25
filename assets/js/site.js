@@ -1,4 +1,3 @@
-
 // /assets/js/site.js
 
 // =========================
@@ -623,14 +622,14 @@
   }
 
   function handleCommentScroll() {
-    const comment = document.getElementById("comment-section");
-    if (comment) {
-      comment.scrollIntoView({ behavior: "smooth" });
+    const commentBox = document.getElementById("comments");
+    if (commentBox) {
+      commentBox.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
     const desc = document.querySelector(".game-description");
     if (desc) {
-      desc.scrollIntoView({ behavior: "smooth" });
+      desc.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
@@ -806,6 +805,7 @@
 
   document.addEventListener("DOMContentLoaded", initHotGamesRotator);
 })();
+
 // =========================
 // Footer year
 // =========================
@@ -817,159 +817,10 @@
     }
   });
 })();
-document.getElementById("btnComment")?.addEventListener("click", function () {
-  const commentBox = document.getElementById("comments");
-  if (commentBox) {
-    commentBox.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-});
+
 // =======================
-// COMMENTS MODULE
+// COMMENTS – GitHub Issues moderation
 // =======================
-
-(function () {
-  const commentsSection = document.querySelector(".comments-section");
-  if (!commentsSection) return; // trang nào không có comments thì bỏ qua
-
-  const gameId = commentsSection.getAttribute("data-game-id") || "default";
-
-  const commentsListEl = document.getElementById("comments-list");
-  const commentCountEl = document.getElementById("comment-count");
-  const sortSelectEl = document.getElementById("comment-sort");
-
-  const commentFormEl = document.getElementById("comment-form");
-  const commentTextEl = document.getElementById("comment-text");
-  const commentNameEl = document.getElementById("comment-name");
-  const commentEmailEl = document.getElementById("comment-email");
-  const commentTermsEl = document.getElementById("comment-terms");
-
-  // Tạm thời dùng localStorage theo gameId để test UI
-  const STORAGE_KEY = "comments_" + gameId;
-  let commentsState = [];
-
-  function loadFromStorage() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      commentsState = raw ? JSON.parse(raw) : [];
-    } catch (e) {
-      commentsState = [];
-    }
-  }
-
-  function saveToStorage() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(commentsState));
-  }
-
-  function createCommentCard(c) {
-    const card = document.createElement("article");
-    card.className = "comment-card";
-
-    const avatar = document.createElement("div");
-    avatar.className = "comment-avatar";
-    avatar.textContent = c.name ? c.name.trim()[0].toUpperCase() : "?";
-
-    const content = document.createElement("div");
-    content.className = "comment-content";
-
-    const meta = document.createElement("div");
-    meta.className = "comment-meta";
-    meta.innerHTML = `
-      <span class="comment-name">${c.name || "Guest"}</span>
-      <span class="comment-time">${c.createdAt || ""}</span>
-    `;
-
-    const text = document.createElement("p");
-    text.className = "comment-text";
-    text.textContent = c.text;
-
-    const actions = document.createElement("div");
-    actions.className = "comment-actions";
-    actions.innerHTML = `
-      <span class="comment-reply">↩ Reply</span>
-      <div class="comment-votes">
-        <span class="comment-vote-btn">
-          <span class="icon">👍</span>
-          <span>${c.likes ?? 0}</span>
-        </span>
-        <span class="comment-vote-btn">
-          <span class="icon">👎</span>
-          <span>${c.dislikes ?? 0}</span>
-        </span>
-      </div>
-    `;
-
-    content.appendChild(meta);
-    content.appendChild(text);
-    content.appendChild(actions);
-
-    card.appendChild(avatar);
-    card.appendChild(content);
-
-    return card;
-  }
-
-  function renderComments() {
-    commentsListEl.innerHTML = "";
-    commentsState.forEach((c) => {
-      commentsListEl.appendChild(createCommentCard(c));
-    });
-    commentCountEl.textContent = `(${commentsState.length})`;
-  }
-
-  function sortComments(mode) {
-    if (mode === "oldest") {
-      commentsState.sort((a, b) => a.createdAtMs - b.createdAtMs);
-    } else {
-      commentsState.sort((a, b) => b.createdAtMs - a.createdAtMs);
-    }
-  }
-
-  // KHỞI TẠO
-  loadFromStorage();
-  sortComments("newest");
-  renderComments();
-
-  sortSelectEl?.addEventListener("change", () => {
-    sortComments(sortSelectEl.value);
-    renderComments();
-  });
-
-  commentFormEl.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const text = commentTextEl.value.trim();
-    if (!text || !commentTermsEl.checked) return;
-
-    const name = commentNameEl.value.trim() || "Guest";
-    const email = commentEmailEl.value.trim();
-
-    const now = Date.now();
-
-    const newComment = {
-      name,
-      email,
-      text,
-      createdAt: "just now",
-      createdAtMs: now,
-      likes: 0,
-      dislikes: 0
-    };
-
-    // TODO: sau này thay đoạn này bằng gửi lên GitHub Issues
-    commentsState.push(newComment);
-    sortComments(sortSelectEl.value || "newest");
-    saveToStorage();
-    renderComments();
-
-    commentTextEl.value = "";
-  });
-})();
-// =======================
-// COMMENTS MODULE (localStorage + English validation)
-// =======================
-
 (function () {
   const commentsSection = document.querySelector(".comments-section");
   if (!commentsSection) return; // page without comments
@@ -986,29 +837,14 @@ document.getElementById("btnComment")?.addEventListener("click", function () {
   const commentEmailEl = document.getElementById("comment-email");
   const commentTermsEl = document.getElementById("comment-terms");
 
-  const STORAGE_KEY = "comments_" + gameId;
-  let commentsState = [];
-
-  function loadFromStorage() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      commentsState = raw ? JSON.parse(raw) : [];
-    } catch (e) {
-      commentsState = [];
-    }
-  }
-
-  function saveToStorage() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(commentsState));
-  }
-
-  function createCommentCard(c) {
+  // ---------- Helpers ----------
+  function createCommentCard(data) {
     const card = document.createElement("article");
     card.className = "comment-card";
 
     const avatar = document.createElement("div");
     avatar.className = "comment-avatar";
-    avatar.textContent = c.name ? c.name.trim()[0].toUpperCase() : "?";
+    avatar.textContent = data.name ? data.name.trim()[0].toUpperCase() : "?";
 
     const content = document.createElement("div");
     content.className = "comment-content";
@@ -1016,33 +852,16 @@ document.getElementById("btnComment")?.addEventListener("click", function () {
     const meta = document.createElement("div");
     meta.className = "comment-meta";
     meta.innerHTML = `
-      <span class="comment-name">${c.name || "Guest"}</span>
-      <span class="comment-time">${c.createdAt || ""}</span>
+      <span class="comment-name">${data.name || "Guest"}</span>
+      <span class="comment-time">${data.createdAt || ""}</span>
     `;
 
     const text = document.createElement("p");
     text.className = "comment-text";
-    text.textContent = c.text;
-
-    const actions = document.createElement("div");
-    actions.className = "comment-actions";
-    actions.innerHTML = `
-      <span class="comment-reply">↩ Reply</span>
-      <div class="comment-votes">
-        <span class="comment-vote-btn">
-          <span class="icon">👍</span>
-          <span>${c.likes ?? 0}</span>
-        </span>
-        <span class="comment-vote-btn">
-          <span class="icon">👎</span>
-          <span>${c.dislikes ?? 0}</span>
-        </span>
-      </div>
-    `;
+    text.textContent = data.text;
 
     content.appendChild(meta);
     content.appendChild(text);
-    content.appendChild(actions);
 
     card.appendChild(avatar);
     card.appendChild(content);
@@ -1050,71 +869,148 @@ document.getElementById("btnComment")?.addEventListener("click", function () {
     return card;
   }
 
-  function renderComments() {
-    commentsListEl.innerHTML = "";
-    commentsState.forEach((c) => {
-      commentsListEl.appendChild(createCommentCard(c));
-    });
-    commentCountEl.textContent = `(${commentsState.length})`;
+  function extractCommentText(body) {
+    if (!body) return "";
+    const marker = "Comment:\n";
+    let txt = body;
+    const idx = body.indexOf(marker);
+    if (idx !== -1) {
+      txt = body.substring(idx + marker.length);
+    }
+    txt = txt.split("\n---")[0];
+    return txt.trim();
   }
 
-  function sortComments(mode) {
-    if (mode === "oldest") {
-      commentsState.sort((a, b) => a.createdAtMs - b.createdAtMs);
-    } else {
-      commentsState.sort((a, b) => b.createdAtMs - a.createdAtMs);
+  function extractName(body, fallbackTitle) {
+    if (!body) return fallbackTitle || "Guest";
+    const m = body.match(/Name:\s*(.+)/i);
+    if (m && m[1]) return m[1].trim();
+    if (fallbackTitle) return fallbackTitle.replace(/^Comment from\s*/i, "").trim();
+    return "Guest";
+  }
+
+  // ---------- Load approved comments from GitHub ----------
+  async function loadApprovedComments() {
+    if (!commentsListEl || !commentCountEl) return;
+
+    commentsListEl.innerHTML =
+      '<div style="opacity:0.8;font-size:14px;">Loading comments...</div>';
+
+    try {
+      const apiUrl =
+        "https://api.github.com/repos/cookieclicker-2-game/cookieclicker-2-game.github.io/issues?state=all&labels=approved&per_page=100";
+
+      const res = await fetch(apiUrl);
+      const issues = await res.json();
+
+      const filtered = issues.filter((issue) => {
+        if (!issue.body) return false;
+        return issue.body.includes("Game ID: " + gameId);
+      });
+
+      // sort newest first by default
+      filtered.sort(
+        (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
+
+      commentsListEl.innerHTML = "";
+      let count = 0;
+
+      filtered.forEach((issue) => {
+        const body = issue.body || "";
+        const name = extractName(body, issue.title || "");
+        const text = extractCommentText(body);
+        if (!text) return;
+
+        const createdAt = new Date(issue.created_at).toLocaleString();
+
+        const card = createCommentCard({
+          name,
+          text,
+          createdAt
+        });
+
+        commentsListEl.appendChild(card);
+        count++;
+      });
+
+      commentCountEl.textContent = `(${count})`;
+
+      if (count === 0) {
+        commentsListEl.innerHTML =
+          '<div style="opacity:0.75;font-size:14px;">No comments yet.</div>';
+      }
+
+      // handle sort dropdown (newest/oldest)
+      if (sortSelectEl) {
+        sortSelectEl.addEventListener("change", function () {
+          const mode = sortSelectEl.value;
+          const arr = Array.from(commentsListEl.querySelectorAll(".comment-card"));
+          if (arr.length <= 1) return;
+
+          arr.sort((a, b) => {
+            const ta = a.querySelector(".comment-time")?.textContent || "";
+            const tb = b.querySelector(".comment-time")?.textContent || "";
+            const da = new Date(ta).getTime();
+            const db = new Date(tb).getTime();
+            return mode === "oldest" ? da - db : db - da;
+          });
+
+          commentsListEl.innerHTML = "";
+          arr.forEach((el) => commentsListEl.appendChild(el));
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      commentsListEl.innerHTML =
+        '<div style="color:#fecaca;font-size:14px;">Failed to load comments.</div>';
+      commentCountEl.textContent = "(0)";
     }
+  }
+
+  // ---------- Submit comment → open GitHub Issue ----------
+  function initSubmit() {
+    if (!commentFormEl) return;
+
+    commentFormEl.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const text = (commentTextEl.value || "").trim();
+      const name = (commentNameEl.value || "").trim() || "Anonymous";
+      const email = (commentEmailEl.value || "").trim();
+
+      if (!text) {
+        alert("Please enter your comment.");
+        commentTextEl.focus();
+        return;
+      }
+
+      if (!commentTermsEl.checked) {
+        alert("Please agree to the terms and conditions before submitting.");
+        commentTermsEl.focus();
+        return;
+      }
+
+      let body = "";
+      body += `Game ID: ${gameId}\n`;
+      body += `Name: ${name}\n`;
+      if (email) body += `Email: ${email}\n`;
+      body += `\nComment:\n${text}\n\n---\nPage: ${location.href}`;
+
+      const title = `Comment from ${name}`;
+      const issueUrl =
+        "https://github.com/cookieclicker-2-game/cookieclicker-2-game.github.io/issues/new" +
+        `?title=${encodeURIComponent(title)}` +
+        `&body=${encodeURIComponent(body)}`;
+
+      window.open(issueUrl, "_blank");
+
+      commentTextEl.value = "";
+      showToast("Thanks! Your comment will appear after it is reviewed.");
+    });
   }
 
   // init
-  loadFromStorage();
-  sortComments("newest");
-  renderComments();
-
-  sortSelectEl?.addEventListener("change", () => {
-    sortComments(sortSelectEl.value);
-    renderComments();
-  });
-
-  commentFormEl.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const text = (commentTextEl.value || "").trim();
-    const name = (commentNameEl.value || "").trim() || "Guest";
-    const email = (commentEmailEl.value || "").trim();
-
-    // Custom validation in ENGLISH
-    if (!text) {
-      alert("Please enter your comment.");
-      commentTextEl.focus();
-      return;
-    }
-
-    if (!commentTermsEl.checked) {
-      alert("Please agree to the terms and conditions before submitting.");
-      commentTermsEl.focus();
-      return;
-    }
-
-    const now = Date.now();
-
-    const newComment = {
-      name,
-      email,
-      text,
-      createdAt: "just now",
-      createdAtMs: now,
-      likes: 0,
-      dislikes: 0
-    };
-
-    // hiện tại: lưu localStorage trên máy user
-    commentsState.push(newComment);
-    sortComments(sortSelectEl.value || "newest");
-    saveToStorage();
-    renderComments();
-
-    commentTextEl.value = "";
-  });
+  loadApprovedComments();
+  initSubmit();
 })();
-
