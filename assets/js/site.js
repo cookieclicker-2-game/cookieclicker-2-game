@@ -966,4 +966,155 @@ document.getElementById("btnComment")?.addEventListener("click", function () {
     commentTextEl.value = "";
   });
 })();
+// =======================
+// COMMENTS MODULE (localStorage + English validation)
+// =======================
+
+(function () {
+  const commentsSection = document.querySelector(".comments-section");
+  if (!commentsSection) return; // page without comments
+
+  const gameId = commentsSection.getAttribute("data-game-id") || "default";
+
+  const commentsListEl = document.getElementById("comments-list");
+  const commentCountEl = document.getElementById("comment-count");
+  const sortSelectEl = document.getElementById("comment-sort");
+
+  const commentFormEl = document.getElementById("comment-form");
+  const commentTextEl = document.getElementById("comment-text");
+  const commentNameEl = document.getElementById("comment-name");
+  const commentEmailEl = document.getElementById("comment-email");
+  const commentTermsEl = document.getElementById("comment-terms");
+
+  const STORAGE_KEY = "comments_" + gameId;
+  let commentsState = [];
+
+  function loadFromStorage() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      commentsState = raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      commentsState = [];
+    }
+  }
+
+  function saveToStorage() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(commentsState));
+  }
+
+  function createCommentCard(c) {
+    const card = document.createElement("article");
+    card.className = "comment-card";
+
+    const avatar = document.createElement("div");
+    avatar.className = "comment-avatar";
+    avatar.textContent = c.name ? c.name.trim()[0].toUpperCase() : "?";
+
+    const content = document.createElement("div");
+    content.className = "comment-content";
+
+    const meta = document.createElement("div");
+    meta.className = "comment-meta";
+    meta.innerHTML = `
+      <span class="comment-name">${c.name || "Guest"}</span>
+      <span class="comment-time">${c.createdAt || ""}</span>
+    `;
+
+    const text = document.createElement("p");
+    text.className = "comment-text";
+    text.textContent = c.text;
+
+    const actions = document.createElement("div");
+    actions.className = "comment-actions";
+    actions.innerHTML = `
+      <span class="comment-reply">↩ Reply</span>
+      <div class="comment-votes">
+        <span class="comment-vote-btn">
+          <span class="icon">👍</span>
+          <span>${c.likes ?? 0}</span>
+        </span>
+        <span class="comment-vote-btn">
+          <span class="icon">👎</span>
+          <span>${c.dislikes ?? 0}</span>
+        </span>
+      </div>
+    `;
+
+    content.appendChild(meta);
+    content.appendChild(text);
+    content.appendChild(actions);
+
+    card.appendChild(avatar);
+    card.appendChild(content);
+
+    return card;
+  }
+
+  function renderComments() {
+    commentsListEl.innerHTML = "";
+    commentsState.forEach((c) => {
+      commentsListEl.appendChild(createCommentCard(c));
+    });
+    commentCountEl.textContent = `(${commentsState.length})`;
+  }
+
+  function sortComments(mode) {
+    if (mode === "oldest") {
+      commentsState.sort((a, b) => a.createdAtMs - b.createdAtMs);
+    } else {
+      commentsState.sort((a, b) => b.createdAtMs - a.createdAtMs);
+    }
+  }
+
+  // init
+  loadFromStorage();
+  sortComments("newest");
+  renderComments();
+
+  sortSelectEl?.addEventListener("change", () => {
+    sortComments(sortSelectEl.value);
+    renderComments();
+  });
+
+  commentFormEl.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const text = (commentTextEl.value || "").trim();
+    const name = (commentNameEl.value || "").trim() || "Guest";
+    const email = (commentEmailEl.value || "").trim();
+
+    // Custom validation in ENGLISH
+    if (!text) {
+      alert("Please enter your comment.");
+      commentTextEl.focus();
+      return;
+    }
+
+    if (!commentTermsEl.checked) {
+      alert("Please agree to the terms and conditions before submitting.");
+      commentTermsEl.focus();
+      return;
+    }
+
+    const now = Date.now();
+
+    const newComment = {
+      name,
+      email,
+      text,
+      createdAt: "just now",
+      createdAtMs: now,
+      likes: 0,
+      dislikes: 0
+    };
+
+    // hiện tại: lưu localStorage trên máy user
+    commentsState.push(newComment);
+    sortComments(sortSelectEl.value || "newest");
+    saveToStorage();
+    renderComments();
+
+    commentTextEl.value = "";
+  });
+})();
 
