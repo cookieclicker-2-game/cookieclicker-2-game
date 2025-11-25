@@ -1937,3 +1937,28 @@ body.light .comment-error {
 #comments .comment-item {
   border-radius: 18px;
 }
+/* Checkbox + text: nằm trên 1 dòng, không bị lệch */
+#comments .comment-consent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* hoặc space-between nếu bạn muốn text lệch về bên phải */
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 0.85rem;
+}
+
+/* Không cho text xuống dòng ở màn desktop */
+#comments .comment-consent label {
+  white-space: nowrap;
+}
+
+/* Cho mobile được phép xuống dòng nếu màn quá nhỏ */
+@media (max-width: 640px) {
+  #comments .comment-consent {
+    align-items: flex-start;
+  }
+
+  #comments .comment-consent label {
+    white-space: normal;
+  }
+}
