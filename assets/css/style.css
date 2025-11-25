@@ -1919,3 +1919,21 @@ body.light .comment-error {
   max-width: 980px;
   margin: 32px auto 0;
 }
+/* Form comment – tất cả input/textarea trong khu comments */
+#comments input,
+#comments textarea {
+  width: 100%;               /* luôn nằm gọn trong khung */
+  box-sizing: border-box;    /* tính luôn padding, không vượt khung */
+  border-radius: 999px;      /* cho kiểu pill giống nút, bạn có thể giảm nếu muốn vuông hơn */
+}
+
+/* Riêng textarea thì bo góc ít hơn, nhìn mềm hơn */
+#comments textarea {
+  border-radius: 18px;
+}
+
+/* Thẻ hiển thị từng comment cho gọn lại */
+#comments .comment-card,
+#comments .comment-item {
+  border-radius: 18px;
+}
