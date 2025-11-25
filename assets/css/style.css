@@ -1348,7 +1348,7 @@ body.light #cusdis_thread {
 
 .hero-figure img {
   width: 100%;
-  max-width: 460px;                 /* to hơn 340px trước đây */
+  max-width: 460px;
   height: auto;
   border-radius: 12px;
   object-fit: cover;
@@ -1358,6 +1358,7 @@ body.light #cusdis_thread {
 body.light .hero-figure img {
   box-shadow: 0 12px 30px rgba(148, 163, 184, 0.55);
 }
+
 /* =========================================
    Improved Headings (H2 / H3) Styling
    Matches dark/light theme and site color palette
@@ -1382,16 +1383,19 @@ body.light .game-description h2 {
 
 /* H3 — Sub headings inside content */
 .game-description h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 22px;
-  margin-bottom: 8px;
-  color: #e5e7eb; /* soft white for dark mode */
+  font-size: 19px;
+  font-weight: 700;
+  margin-top: 26px;
+  margin-bottom: 10px;
+  color: #fde68a; /* warm cookie highlight */
+  text-shadow: 0 0 8px rgba(250, 204, 21, 0.35);
+  letter-spacing: 0.2px;
 }
 
 /* Light mode H3 */
 body.light .game-description h3 {
-  color: #1f2937; /* Gray-800 for clean readability */
+  color: #92400e;          /* rich brown in light mode */
+  text-shadow: none;       /* sạch, không bị mờ chữ */
 }
 
 /* Subtle underline for both themes to improve structure */
@@ -1412,119 +1416,27 @@ body.light .game-description h3::after,
 body.light .game-description h2::after {
   background: linear-gradient(to right, #f59e0b, transparent);
 }
-/* === Stronger H3 styling (override) === */
 
-.game-description h3 {
-  font-size: 19px;
-  font-weight: 700;
-  margin-top: 26px;
-  margin-bottom: 10px;
-  color: #fde68a; /* warm cookie highlight */
-  text-shadow: 0 0 8px rgba(250, 204, 21, 0.35);
-  letter-spacing: 0.2px;
-}
-
-body.light .game-description h3 {
-  color: #92400e;          /* rich brown in light mode */
-  text-shadow: none;       /* sạch, không bị mờ chữ */
-}
-/* =====================================
-   BEAUTIFY CUSDIS COMMENT BOX
-===================================== */
-
-.comments-card {
-  padding: 18px 20px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-}
-
-body.light .comments-card {
-  background: rgba(255,255,255,0.8);
-  border: 1px solid rgba(0,0,0,0.08);
-}
-
-.section-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 14px;
-  color: var(--accent-cookie);
-}
-
-#cusdis_thread iframe {
-  width: 100% !important;
-  min-height: 500px;
-  border: 0;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-  overflow: hidden;
-}
 /* ===============================
-   COMMENTS – Cookie Clicker style
+   COMMENTS – Game style (no Cusdis)
 ================================= */
 
-.comments-card {
-  margin-top: 14px;
-  padding: 20px 22px 22px;
-  border-radius: 20px;
-  background: #7a511f;         /* caramel */
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 12px 28px rgba(60,40,10,0.55);
-  overflow: hidden;
-}
-
-/* Light mode cũng dùng caramel sáng hơn */
-body.light .comments-card {
-  background: #996624;       /* caramel nhạt */
-  border-color: rgba(0,0,0,0.18);
-  box-shadow: 0 8px 18px rgba(60,40,10,0.25);
-}
-
-.comments-card .section-title {
-  margin: 0 0 12px;
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffe7b3;             /* vàng kem – dễ đọc */
-}
-
-/* Khung Cusdis */
-#cusdis_thread {
-  width: 100%;
-  max-width: 100%;
-}
-
-/* Iframe Cusdis – bo góc + bỏ scroll */
-#cusdis_thread iframe {
-  width: 100% !important;
-  min-height: 520px;
-  border: 0;
-  border-radius: 14px;
-  background: transparent !important;
-}
-
-/* FIX chữ bên trong (Cách 1 – override màu text bên trong iframe) */
-#cusdis_thread iframe {
-  color-scheme: light;
-}
-
-/* ===========================
-   COMMENTS UI
-   =========================== */
-
 .comments-section {
-  margin-top: 32px;
-  padding: 20px 16px 24px;
-  border-radius: 18px;
-  background: var(--bg-light-soft);
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
-}
-
-[data-theme="dark"] .comments-section {
+  margin: 32px auto 24px;
+  padding: 20px 18px 22px;
+  border-radius: 20px;
+  max-width: 840px;
   background: var(--bg-dark-soft);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
 }
 
+/* Light mode nền sáng lại */
+body.light .comments-section {
+  background: var(--bg-light-soft);
+  box-shadow: 0 18px 45px rgba(148, 163, 184, 0.4);
+}
+
+/* Header: "Comments (0)" + Sort */
 .comments-header-row {
   display: flex;
   align-items: center;
@@ -1536,12 +1448,12 @@ body.light .comments-card {
 .comments-title {
   font-size: 18px;
   font-weight: 600;
-  color: var(--text-dark);
   margin: 0;
+  color: var(--text-light);
 }
 
-[data-theme="dark"] .comments-title {
-  color: var(--text-light);
+body.light .comments-title {
+  color: var(--text-dark);
 }
 
 .comments-sort {
@@ -1553,11 +1465,11 @@ body.light .comments-card {
 }
 
 .comments-sort label {
-  color: var(--text-dark);
+  color: var(--text-light);
 }
 
-[data-theme="dark"] .comments-sort label {
-  color: var(--text-light);
+body.light .comments-sort label {
+  color: var(--text-dark);
 }
 
 #comment-sort {
@@ -1569,12 +1481,14 @@ body.light .comments-card {
   color: inherit;
 }
 
+/* Line ngăn cách */
 .comments-divider {
   height: 1px;
   margin: 8px 0 16px;
   background: rgba(148, 163, 184, 0.4);
 }
 
+/* LIST COMMENTS */
 .comments-list {
   display: flex;
   flex-direction: column;
@@ -1587,21 +1501,25 @@ body.light .comments-card {
 .comments-list::-webkit-scrollbar {
   width: 4px;
 }
+
 .comments-list::-webkit-scrollbar-thumb {
   border-radius: 999px;
   background: rgba(148, 163, 184, 0.8);
 }
 
+/* Card từng comment */
 .comment-card {
   display: flex;
   gap: 12px;
   padding: 14px 16px;
   border-radius: 16px;
-  background: #e5e7eb;
+  background: #020617;
+  border: 1px solid rgba(148, 163, 184, 0.4);
 }
 
-[data-theme="dark"] .comment-card {
-  background: #020617;
+body.light .comment-card {
+  background: #e5e7eb;
+  border-color: rgba(148, 163, 184, 0.6);
 }
 
 .comment-avatar {
@@ -1634,32 +1552,33 @@ body.light .comments-card {
 
 .comment-name {
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--text-light);
 }
 
-[data-theme="dark"] .comment-name {
-  color: var(--text-light);
+body.light .comment-name {
+  color: var(--text-dark);
 }
 
 .comment-time {
   opacity: 0.7;
-  color: var(--text-dark);
+  color: var(--text-light);
 }
 
-[data-theme="dark"] .comment-time {
-  color: var(--text-light);
+body.light .comment-time {
+  color: var(--text-dark);
 }
 
 .comment-text {
   font-size: 14px;
   line-height: 1.5;
-  color: var(--text-dark);
-}
-
-[data-theme="dark"] .comment-text {
   color: var(--text-light);
 }
 
+body.light .comment-text {
+  color: var(--text-dark);
+}
+
+/* Hàng dưới: Reply + like/dislike */
 .comment-actions {
   display: flex;
   justify-content: space-between;
@@ -1699,7 +1618,8 @@ body.light .comments-card {
   font-size: 14px;
 }
 
-/* FORM */
+/* ========== FORM ========== */
+
 .comment-form {
   margin-top: 18px;
   display: flex;
@@ -1707,23 +1627,26 @@ body.light .comments-card {
   gap: 8px;
 }
 
+/* Dòng input chính + nút > */
 .comment-input-row {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 6px;
+  gap: 8px;
   align-items: center;
 }
 
 .comment-input-main {
-  border-radius: 8px;
+  width: 100%;
+  border-radius: 10px;
   border: 1px solid var(--border-soft);
   padding: 10px 12px;
-  background: transparent;
-  color: var(--text-dark);
+  background: rgba(15, 23, 42, 0.95);
+  color: var(--text-light);
 }
 
-[data-theme="dark"] .comment-input-main {
-  color: var(--text-light);
+body.light .comment-input-main {
+  background: rgba(249, 250, 251, 0.95);
+  color: var(--text-dark);
 }
 
 .comment-send-btn {
@@ -1738,17 +1661,21 @@ body.light .comments-card {
   color: #111827;
 }
 
+/* Name & Email: mỗi cái 1 dòng full width */
 .comment-input-sub {
-  border-radius: 8px;
+  display: block;
+  width: 100%;
+  border-radius: 10px;
   border: 1px solid var(--border-soft);
   padding: 8px 12px;
-  background: transparent;
+  background: rgba(15, 23, 42, 0.95);
   font-size: 14px;
-  color: var(--text-dark);
+  color: var(--text-light);
 }
 
-[data-theme="dark"] .comment-input-sub {
-  color: var(--text-light);
+body.light .comment-input-sub {
+  background: rgba(249, 250, 251, 0.95);
+  color: var(--text-dark);
 }
 
 .comment-input-main::placeholder,
@@ -1756,15 +1683,16 @@ body.light .comments-card {
   opacity: 0.65;
 }
 
+/* Checkbox terms */
 .comment-terms {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 13px;
   margin-top: 4px;
-  color: var(--text-dark);
+  color: var(--text-light);
 }
 
-[data-theme="dark"] .comment-terms {
-  color: var(--text-light);
+body.light .comment-terms {
+  color: var(--text-dark);
 }
