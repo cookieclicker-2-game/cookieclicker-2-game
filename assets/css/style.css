@@ -1676,3 +1676,233 @@ body.light .comment-input-sub {
   margin-top: 4px;
   color: #fef9c3;
 }
+/* ===============================
+   COMMENTS – unified dark/light
+================================= */
+
+.comments-section {
+  margin-top: 16px;
+  padding: 18px 18px 20px;
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg-dark);
+  box-shadow: var(--shadow-soft);
+}
+
+body.light .comments-section {
+  background: var(--card-bg-light);
+}
+
+.comments-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.comments-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+body.light .comments-title {
+  color: var(--text-dark);
+}
+
+.comments-sort {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.comments-sort label {
+  color: var(--text-light);
+}
+
+body.light .comments-sort label {
+  color: var(--text-dark);
+}
+
+#comment-sort {
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  padding: 4px 10px;
+  background: transparent;
+  font-size: 13px;
+  color: inherit;
+}
+
+.comments-divider {
+  height: 1px;
+  margin: 8px 0 14px;
+  background: rgba(148, 163, 184, 0.5);
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 14px;
+}
+
+.comments-list::-webkit-scrollbar {
+  width: 4px;
+}
+.comments-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.8);
+}
+
+/* comment card */
+.comment-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #020617;
+}
+
+body.light .comment-card {
+  background: #f3f4f6;
+}
+
+.comment-avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  background: var(--accent-cookie);
+  color: #111827;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.comment-name {
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+body.light .comment-name {
+  color: var(--text-dark);
+}
+
+.comment-time {
+  opacity: 0.75;
+  color: var(--text-light);
+}
+
+body.light .comment-time {
+  color: var(--text-dark);
+}
+
+.comment-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-light);
+}
+
+body.light .comment-text {
+  color: var(--text-dark);
+}
+
+/* form */
+.comment-form {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comment-input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: center;
+}
+
+.comment-input-main,
+.comment-input-sub {
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  padding: 9px 12px;
+  background: #020617;
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+body.light .comment-input-main,
+body.light .comment-input-sub {
+  background: #f9fafb;
+  color: var(--text-dark);
+}
+
+.comment-input-main::placeholder,
+.comment-input-sub::placeholder {
+  opacity: 0.7;
+}
+
+.comment-send-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  background: var(--accent-cookie);
+  color: #111827;
+}
+
+/* terms checkbox + error */
+.comment-terms {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+body.light .comment-terms {
+  color: var(--text-dark);
+}
+
+.comment-error {
+  margin: 2px 0 0;
+  min-height: 16px;
+  font-size: 12px;
+  color: #fecaca; /* đỏ nhạt */
+}
+
+body.light .comment-error {
+  color: #b91c1c;
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .comments-section {
+    padding-inline: 14px;
+  }
+}
