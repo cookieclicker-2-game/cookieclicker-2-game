@@ -1087,6 +1087,7 @@ body.light .site-toast {
   flex-wrap: nowrap;
   gap: 10px;
 }
+
 /* ===============================
    MOBILE: Make game frame full width & tall
 ================================= */
@@ -1110,14 +1111,16 @@ body.light .site-toast {
     height: 100% !important;
   }
 }
+
 /* Hide category meta in search dropdown */
 .search-result-meta {
   display: none !important;
 }
-/* Hide category meta in search dropdown */
+/* Hide category meta in search dropdown (duplicate safe) */
 .search-result-meta {
   display: none !important;
 }
+
 /* =========================================
    BEAUTIFUL SCROLLBAR FOR SEARCH DROPDOWN
    ========================================= */
@@ -1165,6 +1168,7 @@ body.light .search-results {
   overscroll-behavior: contain;
   scroll-behavior: smooth;
 }
+
 /* ===============================
    MOBILE: Header should not cover game
 ================================= */
@@ -1187,6 +1191,7 @@ body.light .search-results {
     padding-top: 12px;
   }
 }
+
 /* =========================================
    Responsive layout – optimized breakpoints
    Desktop ≥ 1024px | Tablet 768–1023px | Mobile < 768px
@@ -1304,6 +1309,7 @@ body.light .search-results {
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
 /* ===============================
    Comments (Cusdis)
 ================================= */
@@ -1339,6 +1345,7 @@ body.dark #cusdis_thread {
 body.light #cusdis_thread {
   background-color: #ffffff;
 }
+
 /* Hero game thumbnail inside description */
 .hero-figure {
   display: flex;
@@ -1418,275 +1425,19 @@ body.light .game-description h2::after {
 }
 
 /* ===============================
-   COMMENTS – Cookie caramel style
-================================= */
-
-.comments-section {
-  margin-top: 16px;
-  padding: 20px 22px 22px;
-  border-radius: 20px;
-  width: 100%;
-  background: linear-gradient(135deg, #7a511f, #b87928); /* caramel */
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 16px 36px rgba(60, 40, 10, 0.7);
-}
-
-/* Light mode: vẫn cùng tông màu, chỉ giảm bóng cho đỡ nặng */
-body.light .comments-section {
-  box-shadow: 0 12px 28px rgba(156, 105, 32, 0.5);
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-/* Header */
-.comments-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.comments-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0;
-  color: #fff7e6; /* kem */
-}
-
-.comments-sort {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: #fde68a;
-  opacity: 0.9;
-}
-
-.comments-sort label {
-  color: inherit;
-}
-
-#comment-sort {
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  padding: 4px 10px;
-  background: rgba(15, 23, 42, 0.25);
-  font-size: 13px;
-  color: #fefce8;
-}
-
-/* Line ngăn cách */
-.comments-divider {
-  height: 1px;
-  margin: 8px 0 16px;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* LIST COMMENTS */
-.comments-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-height: 420px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-.comments-list::-webkit-scrollbar {
-  width: 4px;
-}
-
-.comments-list::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: rgba(248, 250, 252, 0.8);
-}
-
-/* Card từng comment */
-.comment-card {
-  display: flex;
-  gap: 12px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: rgba(15, 23, 42, 0.88);
-  border: 1px solid rgba(248, 250, 252, 0.18);
-}
-
-body.light .comment-card {
-  background: rgba(15, 23, 42, 0.9);
-  border-color: rgba(248, 250, 252, 0.35);
-}
-
-.comment-avatar {
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 16px;
-  background: #facc15;
-  color: #111827;
-}
-
-.comment-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.comment-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-}
-
-.comment-name {
-  font-weight: 600;
-  color: #fef9c3;
-}
-
-.comment-time {
-  opacity: 0.8;
-  color: #fee2b3;
-}
-
-.comment-text {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #f9fafb;
-}
-
-/* Hàng dưới: Reply + like/dislike */
-.comment-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 4px;
-  font-size: 13px;
-  color: #e5e7eb;
-}
-
-.comment-reply {
-  cursor: pointer;
-  opacity: 0.9;
-}
-
-.comment-reply:hover {
-  text-decoration: underline;
-}
-
-.comment-votes {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.comment-vote-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-  opacity: 0.9;
-}
-
-.comment-vote-btn span {
-  font-size: 13px;
-}
-
-.comment-vote-btn .icon {
-  font-size: 14px;
-}
-
-/* ========== FORM ========== */
-
-.comment-form {
-  margin-top: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* Dòng input chính + nút > */
-.comment-input-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 8px;
-  align-items: center;
-}
-
-.comment-input-main {
-  width: 100%;
-  border-radius: 10px;
-  border: 1px solid rgba(248, 250, 252, 0.35);
-  padding: 10px 12px;
-  background: rgba(15, 23, 42, 0.9);
-  color: #f9fafb;
-}
-
-body.light .comment-input-main {
-  background: rgba(15, 23, 42, 0.9);
-  color: #f9fafb;
-}
-
-.comment-send-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 16px;
-  background: #facc15;
-  color: #111827;
-}
-
-/* Name & Email mỗi cái 1 dòng full width */
-.comment-input-sub {
-  display: block;
-  width: 100%;
-  border-radius: 10px;
-  border: 1px solid rgba(248, 250, 252, 0.25);
-  padding: 8px 12px;
-  background: rgba(15, 23, 42, 0.9);
-  font-size: 14px;
-  color: #f9fafb;
-}
-
-body.light .comment-input-sub {
-  background: rgba(15, 23, 42, 0.9);
-  color: #f9fafb;
-}
-
-.comment-input-main::placeholder,
-.comment-input-sub::placeholder {
-  opacity: 0.7;
-  color: #e5e7eb;
-}
-
-/* Checkbox terms */
-.comment-terms {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  margin-top: 4px;
-  color: #fef9c3;
-}
-/* ===============================
    COMMENTS – unified dark/light
+   (match width with .card, fix inputs)
 ================================= */
 
 .comments-section {
   margin-top: 16px;
-  padding: 18px 18px 20px;
-  border-radius: 18px;
+  padding: 16px 16px 18px;
+  border-radius: var(--radius-xl);           /* cùng radius với .card */
   border: 1px solid var(--border-soft);
   background: var(--card-bg-dark);
   box-shadow: var(--shadow-soft);
+  width: 100%;
+  box-sizing: border-box;                    /* tránh lệch so với khối trên */
 }
 
 body.light .comments-section {
@@ -1836,15 +1587,19 @@ body.light .comment-text {
   gap: 8px;
 }
 
+/* hàng input chính + nút gửi */
 .comment-input-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) 46px;  /* 1fr + nút cố định */
   gap: 6px;
   align-items: center;
 }
 
+/* input chính + name + email */
 .comment-input-main,
 .comment-input-sub {
+  width: 100%;
+  box-sizing: border-box;                     /* NGĂN bị tràn khối */
   border-radius: 999px;
   border: 1px solid var(--border-soft);
   padding: 9px 12px;
@@ -1864,6 +1619,7 @@ body.light .comment-input-sub {
   opacity: 0.7;
 }
 
+/* nút gửi */
 .comment-send-btn {
   width: 42px;
   height: 42px;
@@ -1874,6 +1630,13 @@ body.light .comment-input-sub {
   font-size: 16px;
   background: var(--accent-cookie);
   color: #111827;
+  flex-shrink: 0;
+}
+
+/* đảm bảo mọi input/btn không vượt quá khối */
+.comment-form input,
+.comment-form button {
+  max-width: 100%;
 }
 
 /* terms checkbox + error */
@@ -1883,6 +1646,7 @@ body.light .comment-input-sub {
   gap: 8px;
   font-size: 13px;
   color: var(--text-light);
+  margin-top: 4px;
 }
 
 body.light .comment-terms {
@@ -1893,7 +1657,7 @@ body.light .comment-terms {
   margin: 2px 0 0;
   min-height: 16px;
   font-size: 12px;
-  color: #fecaca; /* đỏ nhạt */
+  color: #fecaca;
 }
 
 body.light .comment-error {
@@ -1905,17 +1669,4 @@ body.light .comment-error {
   .comments-section {
     padding-inline: 14px;
   }
-}
-/* ===== Fix layout khu Comments ===== */
-
-/* Khung ngoài của khu comment */
-#comments {
-  max-width: 980px;          /* cho bằng phần nội dung trên (tuỳ site, có thể chỉnh 900–1000) */
-  margin: 32px auto 0;       /* canh giữa giống main content */
-}
-
-/* Nếu bạn dùng .comments-section thay vì #comments thì thêm: */
-.comments-section {
-  max-width: 980px;
-  margin: 32px auto 0;
 }
