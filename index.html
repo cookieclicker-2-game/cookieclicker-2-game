@@ -414,11 +414,28 @@
   <!-- JS sẽ render 10 game mới nhất -->
   <div id="newGamesGrid" class="game-grid"></div>
 
-  <div style="margin-top:12px;text-align:center;">
-    <a href="/all.games.html" class="nav-link" style="font-size:13px;display:inline-flex;">
-      More Games
-    </a>
-  </div>
+<div style="margin-top:16px;text-align:center;">
+  <a 
+    href="/all.games.html"
+    style="
+      display:inline-block;
+      padding:10px 22px;
+      background:#0a84ff;
+      color:white;
+      font-weight:600;
+      border-radius:8px;
+      font-size:15px;
+      text-decoration:none;
+      box-shadow:0 0 12px rgba(10,132,255,0.5);
+      transition:0.2s;
+    "
+    onmouseover="this.style.background='#1b8fff'; this.style.boxShadow='0 0 16px rgba(27,143,255,0.7)'"
+    onmouseout="this.style.background='#0a84ff'; this.style.boxShadow='0 0 12px rgba(10,132,255,0.5)'"
+  >
+    More Games
+  </a>
+</div>
+
 </section>
 
       </section>
