@@ -508,3 +508,16 @@ window.getHotGames = getHotGames;
 window.getClickerGames = getClickerGames;
 window.getNewGames = getNewGames;
 window.getGamesByCategory = getGamesByCategory;
+// Lấy danh sách game mới nhất theo lastUpdated
+function getLatestGames(limit) {
+  if (!Array.isArray(GAMES)) return [];
+
+  const sorted = GAMES.slice().sort((a, b) => {
+    const aTime = a.lastUpdated ? new Date(a.lastUpdated).getTime() : 0;
+    const bTime = b.lastUpdated ? new Date(b.lastUpdated).getTime() : 0;
+    return bTime - aTime; // mới nhất trước
+  });
+
+  return sorted.slice(0, limit);
+}
+
